@@ -4,6 +4,11 @@
 #include <string>
 #include <vector>
 
+namespace ReminderApp {
+
+namespace Core {
+
+namespace Model {
 class Board {
   private:
     std::string title;
@@ -18,3 +23,7 @@ class Board {
     std::vector<List> &getLists();
     void setLists(std::vector<List> const &lists);
 };
+
+} // namespace Model
+} // namespace Core
+} // namespace ReminderApp

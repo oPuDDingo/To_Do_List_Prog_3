@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Reminder {
+namespace ReminderApp {
 namespace Repository {
 class RepositoryIf {
   public:
@@ -8,4 +8,4 @@ class RepositoryIf {
 };
 
 } // namespace Repository
-} // namespace Reminder
+} // namespace ReminderApp

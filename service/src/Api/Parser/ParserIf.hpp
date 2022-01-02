@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace Reminder {
+namespace ReminderApp {
 namespace Api {
 namespace Parser {
 

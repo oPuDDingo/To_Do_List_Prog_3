@@ -1,7 +1,11 @@
 #pragma once
 
 #include <string>
+namespace ReminderApp {
 
+namespace Core {
+
+namespace Model {
 class Reminder {
   private:
     int id;
@@ -20,3 +24,7 @@ class Reminder {
     void setTitle(std::string title);
     void setTimestamp(std::string time);
 };
+
+} // namespace Model
+} // namespace Core
+} // namespace ReminderApp

@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-using namespace Reminder::Api;
-using namespace Reminder::Core;
+using namespace ReminderApp::Api;
+using namespace ReminderApp::Core;
 using namespace crow;
 
 Endpoint::Endpoint(SimpleApp &givenApp, Manager &givenManager) : app(givenApp),

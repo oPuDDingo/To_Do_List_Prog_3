@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace Reminder::Repository;
+using namespace ReminderApp::Repository;
 
 #ifdef RELEASE_SERVICE
 string const SQLiteRepository::databaseFile = "./data/reminder-app.db";

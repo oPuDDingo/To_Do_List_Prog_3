@@ -3,7 +3,7 @@
 #include "ParserIf.hpp"
 #include "rapidjson/document.h"
 
-namespace Reminder {
+namespace ReminderApp {
 namespace Api {
 namespace Parser {
 
@@ -22,4 +22,4 @@ class JsonParser : public ParserIf {
 
 } // namespace Parser
 } // namespace Api
-} // namespace Reminder
+} // namespace ReminderApp

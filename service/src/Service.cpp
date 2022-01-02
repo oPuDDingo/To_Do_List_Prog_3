@@ -9,11 +9,11 @@
 
 int main() {
     crow::SimpleApp crowApplication;
-    Reminder::Repository::SQLiteRepository sqliteRepository;
-    Reminder::Api::Parser::JsonParser jsonParser;
+    ReminderApp::Repository::SQLiteRepository sqliteRepository;
+    ReminderApp::Api::Parser::JsonParser jsonParser;
 
-    Reminder::Core::Manager manager(jsonParser, sqliteRepository);
-    Reminder::Api::Endpoint endpoint(crowApplication, manager);
+    ReminderApp::Core::Manager manager(jsonParser, sqliteRepository);
+    ReminderApp::Api::Endpoint endpoint(crowApplication, manager);
 
     crowApplication.port(8080)
         //        .multithreaded()

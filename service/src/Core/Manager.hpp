@@ -3,15 +3,15 @@
 #include "Api/Parser/ParserIf.hpp"
 #include "Repository/RepositoryIf.hpp"
 
-namespace Reminder {
+namespace ReminderApp {
 namespace Core {
 class Manager {
   private:
-    Reminder::Repository::RepositoryIf &repository;
-    Reminder::Api::Parser::ParserIf &parser;
+    ReminderApp::Repository::RepositoryIf &repository;
+    ReminderApp::Api::Parser::ParserIf &parser;
 
   public:
-    Manager(Reminder::Api::Parser::ParserIf &givenParser, Reminder::Repository::RepositoryIf &givenRepository);
+    Manager(ReminderApp::Api::Parser::ParserIf &givenParser, ReminderApp::Repository::RepositoryIf &givenRepository);
     ~Manager();
 
     std::string getBoard();
@@ -30,4 +30,4 @@ class Manager {
 };
 
 } // namespace Core
-} // namespace Reminder
+} // namespace ReminderApp

@@ -1,5 +1,7 @@
 #include "Board.hpp"
 
+using namespace ReminderApp::Core::Model;
+
 Board::Board(std::string givenTitle) : title(givenTitle) {}
 
 std::string Board::getTitle() const {

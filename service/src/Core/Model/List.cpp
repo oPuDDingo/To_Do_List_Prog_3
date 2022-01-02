@@ -1,5 +1,7 @@
 #include "List.hpp"
 
+using namespace ReminderApp::Core::Model;
+
 List::List(int givenId, std::string givenTitle) : id(givenId), title(givenTitle) {}
 
 int List::getId() const {

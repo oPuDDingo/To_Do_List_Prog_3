@@ -1,9 +1,9 @@
 #include "Manager.hpp"
 #include <iostream>
 
-using namespace Reminder::Core;
-using namespace Reminder::Api::Parser;
-using namespace Reminder::Repository;
+using namespace ReminderApp::Core;
+using namespace ReminderApp::Api::Parser;
+using namespace ReminderApp::Repository;
 using namespace std;
 
 Manager::Manager(ParserIf &givenParser, RepositoryIf &givenRepository)

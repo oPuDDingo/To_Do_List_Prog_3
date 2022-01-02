@@ -4,6 +4,12 @@
 #include <string>
 #include <vector>
 
+namespace ReminderApp {
+
+namespace Core {
+
+namespace Model {
+
 class List {
   private:
     int id;
@@ -22,3 +28,7 @@ class List {
 
     void addReminder(Reminder &reminder);
 };
+
+} // namespace Model
+} // namespace Core
+} // namespace ReminderApp

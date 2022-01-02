@@ -1,5 +1,7 @@
 #include "Reminder.hpp"
 
+using namespace ReminderApp::Core::Model;
+
 Reminder::Reminder(int id, std::string givenTitle, std::string givenTimestamp) : id(id), title(givenTitle), timestamp(givenTimestamp) {}
 
 int Reminder::getId() const {

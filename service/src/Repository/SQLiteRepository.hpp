@@ -1,10 +1,12 @@
 #pragma once
 
+#include "Core/Model/Reminder.hpp"
 #include "Repository/RepositoryIf.hpp"
 #include "sqlite3.h"
 #include <string>
+#include <vector>
 
-namespace Reminder {
+namespace ReminderApp {
 namespace Repository {
 
 class SQLiteRepository : public RepositoryIf {
@@ -18,8 +20,10 @@ class SQLiteRepository : public RepositoryIf {
     SQLiteRepository();
     virtual ~SQLiteRepository();
 
+    virtual std::vector<ReminderApp::Core::Model::Reminder> getItems(int columnId);
+
     static std::string const databaseFile;
 };
 
 } // namespace Repository
-} // namespace Reminder
+} // namespace ReminderApp
