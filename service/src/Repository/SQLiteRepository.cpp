@@ -24,8 +24,43 @@ SQLiteRepository::SQLiteRepository() : database(nullptr) {
     if (SQLITE_OK != result) {
         cout << "Cannot open database: " << sqlite3_errmsg(database) << endl;
     }
+
+    initialize();
 }
 
 SQLiteRepository::~SQLiteRepository() {
     sqlite3_close(database);
+}
+
+void SQLiteRepository::initialize() {
+    int result = 0;
+    char *errorMessage = nullptr;
+
+    string sqlCreateTableList =
+        "create table if not exists list("
+        "id integer not null primary key autoincrement,"
+        "title text not null;";
+
+    string sqlCreateTableReminder =
+        "create table if not exists reminder("
+        "id integer not null primary key autoincrement,"
+        "title text not null,"
+        "date text not null,"
+        "done bit,"
+        "flag bit,"
+        "list_id integer not null,"
+        "foreign key (list_id) references list (id));";
+
+    result = sqlite3_exec(database, sqlCreateTableList.c_str(), NULL, 0, &errorMessage);
+    handleSQLError(result, errorMessage);
+    result = sqlite3_exec(database, sqlCreateTableReminder.c_str(), NULL, 0, &errorMessage);
+    handleSQLError(result, errorMessage);
+}
+
+void SQLiteRepository::handleSQLError(int statementResult, char *errorMessage) {
+
+    if (statementResult != SQLITE_OK) {
+        cout << "SQL error: " << errorMessage << endl;
+        sqlite3_free(errorMessage);
+    }
 }

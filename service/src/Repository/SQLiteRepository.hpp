@@ -16,6 +16,10 @@ class SQLiteRepository : public RepositoryIf {
     virtual ~SQLiteRepository();
 
     static std::string const databaseFile;
+
+    void initialize();
+
+    void handleSQLError(int statementResult, char *errorMessage);
 };
 
 } // namespace Repository
