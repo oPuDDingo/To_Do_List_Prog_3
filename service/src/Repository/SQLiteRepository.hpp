@@ -25,13 +25,13 @@ class SQLiteRepository : public RepositoryIf {
     virtual ReminderApp::Core::Model::Board getBoard();
     virtual std::vector<ReminderApp::Core::Model::List> getLists();
     virtual std::optional<ReminderApp::Core::Model::List> getList(int id);
-    virtual std::optional<ReminderApp::Core::Model::List> postList(std::string name, int position);
-    virtual std::optional<ReminderApp::Core::Model::List> putList(int id, std::string name, int position);
+    virtual std::optional<ReminderApp::Core::Model::List> postList(std::string title);
+    virtual std::optional<ReminderApp::Core::Model::List> putList(int id, std::string title);
     virtual void deleteList(int id);
     virtual std::vector<ReminderApp::Core::Model::Reminder> getReminders(int listId);
     virtual std::optional<ReminderApp::Core::Model::Reminder> getReminder(int listId, int reminderId);
-    virtual std::optional<ReminderApp::Core::Model::Reminder> postReminder(int listId, std::string title, int position);
-    virtual std::optional<ReminderApp::Core::Model::Reminder> putReminder(int listId, int reminderId, std::string title, int position);
+    virtual std::optional<ReminderApp::Core::Model::Reminder> postReminder(int listId, std::string title);
+    virtual std::optional<ReminderApp::Core::Model::Reminder> putReminder(int listId, int reminderId, std::string title);
     virtual void deleteReminder(int listId, int reminderId);
 
     static std::string const databaseFile;

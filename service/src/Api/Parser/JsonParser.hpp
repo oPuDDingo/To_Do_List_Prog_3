@@ -13,8 +13,8 @@ class JsonParser : public ParserIf {
   private:
     static inline std::string const EMPTY_JSON = "{}";
 
-    bool isValidColumn(rapidjson::Document const &document);
-    bool isValidItem(rapidjson::Document const &document);
+    bool isValidList(rapidjson::Document const &document);
+    bool isValidReminder(rapidjson::Document const &document);
 
     std::string jsonValueToString(rapidjson::Value const &json);
 
@@ -34,8 +34,9 @@ class JsonParser : public ParserIf {
     virtual std::string convertToApiString(ReminderApp::Core::Model::Reminder &reminder);
     virtual std::string convertToApiString(std::vector<ReminderApp::Core::Model::Reminder> &reminders);
 
-    virtual std::optional<ReminderApp::Core::Model::List> convertColumnToModel(int listId, std::string &request);
-    virtual std::optional<ReminderApp::Core::Model::Reminder> convertItemToModel(int reminderId, std::string &request);
+    virtual std::optional<ReminderApp::Core::Model::List> convertListToModel(int listId, std::string &request);
+    virtual std::optional<ReminderApp::Core::Model::Reminder> convertReminderToModel(int reminderId, std::string &request);
+
     virtual std::string getEmptyResponseString() {
         return JsonParser::EMPTY_JSON;
     }
