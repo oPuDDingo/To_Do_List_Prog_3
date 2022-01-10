@@ -4,11 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace ReminderApp {
-
-namespace Core {
-
-namespace Model {
+namespace ReminderApp::Core::Model {
 
 class List {
   private:
@@ -29,6 +25,4 @@ class List {
     void addReminder(Reminder &reminder);
 };
 
-} // namespace Model
-} // namespace Core
 } // namespace ReminderApp

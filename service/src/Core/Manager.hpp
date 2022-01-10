@@ -3,8 +3,8 @@
 #include "Api/Parser/ParserIf.hpp"
 #include "Repository/RepositoryIf.hpp"
 
-namespace ReminderApp {
-namespace Core {
+namespace ReminderApp::Core {
+
 class Manager {
   private:
     ReminderApp::Repository::RepositoryIf &repository;
@@ -29,5 +29,4 @@ class Manager {
     void deleteReminder(int listId, int reminderId);
 };
 
-} // namespace Core
 } // namespace ReminderApp

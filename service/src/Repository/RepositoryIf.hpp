@@ -1,11 +1,10 @@
 #pragma once
 
-namespace ReminderApp {
-namespace Repository {
+namespace ReminderApp::Repository {
+
 class RepositoryIf {
   public:
     virtual ~RepositoryIf() {}
 };
 
-} // namespace Repository
 } // namespace ReminderApp

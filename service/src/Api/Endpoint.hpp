@@ -3,8 +3,7 @@
 #include "Core/Manager.hpp"
 #include "crow.h"
 
-namespace ReminderApp {
-namespace Api {
+namespace ReminderApp::Api {
 
 class Endpoint {
   public:
@@ -18,5 +17,4 @@ class Endpoint {
     ReminderApp::Core::Manager &manager;
 };
 
-} // namespace Api
 } // namespace ReminderApp

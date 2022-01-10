@@ -2,9 +2,7 @@
 
 #include <string>
 
-namespace ReminderApp {
-namespace Api {
-namespace Parser {
+namespace ReminderApp::Api::Parser {
 
 class ParserIf {
   public:
@@ -13,6 +11,4 @@ class ParserIf {
     virtual std::string getEmptyResponseString() = 0;
 };
 
-} // namespace Parser
-} // namespace Api
 } // namespace Reminder
