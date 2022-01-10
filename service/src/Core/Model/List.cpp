@@ -20,6 +20,10 @@ void List::setTitle(std::string title) {
     title = title;
 }
 
+std::vector<Reminder> List::getReminders() const {
+    return reminders;
+}
+
 void List::addReminder(Reminder &reminder) {
     reminders.push_back(reminder);
 }

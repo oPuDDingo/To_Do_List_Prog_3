@@ -22,6 +22,8 @@ class List {
     std::string getTitle() const;
     void setTitle(std::string title);
 
+    std::vector<Reminder> getReminders() const;
+
     void addReminder(Reminder &reminder);
 };
 
