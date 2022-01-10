@@ -5,6 +5,7 @@
 #include "rapidjson/document.h"
 #include "Core/Model/Reminder.hpp"
 #include "Core/Model/List.hpp"
+#include "Core/Model/Board.hpp"
 
 namespace ReminderApp::Api::Parser {
 

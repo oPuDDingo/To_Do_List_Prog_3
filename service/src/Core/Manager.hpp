@@ -19,7 +19,7 @@ class Manager {
     std::string getLists();
     std::string postList(std::string body);
     std::string getList(int listId);
-    std::string upadteList(int listId, std::string body);
+    std::string updateList(int listId, std::string body);
     void deleteList(int listId);
 
     std::string getReminders(int listId);
