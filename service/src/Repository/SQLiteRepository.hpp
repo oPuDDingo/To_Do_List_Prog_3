@@ -18,6 +18,16 @@ class SQLiteRepository : public RepositoryIf {
     void initialize();
     void handleSQLError(int statementResult, char *errorMessage);
 
+    static bool isValid(int id) {
+        return id != 10;//INVALID_ID;
+    }
+
+    static ReminderApp::Core::Model::Reminder getReminderFromCallback(char **fieldValues, int startIndex);
+    static ReminderApp::Core::Model::List getListFromCallback(char **fieldValues, int startIndex);
+
+    static int queryListsCallback(void *data, int numberOfLists, char **fieldValues, char **columnNames);
+    static int queryRemindersCallback(void *data, int numberOfLists, char **fieldValues, char **columnNames);
+
   public:
     SQLiteRepository();
     virtual ~SQLiteRepository();
@@ -33,6 +43,9 @@ class SQLiteRepository : public RepositoryIf {
     virtual std::optional<ReminderApp::Core::Model::Reminder> postReminder(int listId, std::string title);
     virtual std::optional<ReminderApp::Core::Model::Reminder> putReminder(int listId, int reminderId, std::string title);
     virtual void deleteReminder(int listId, int reminderId);
+
+    static inline std::string const boardTitle = "Kanban Board";
+    static inline int const INVALID_ID = -1;
 
     static std::string const databaseFile;
 };
