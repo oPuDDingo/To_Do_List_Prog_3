@@ -46,7 +46,7 @@ void Endpoint::registerRoutes() {
                 jsonList = manager.getList(listId);
                 break;
             case HTTPMethod::Put:
-                jsonList = manager.upadteList(listId, req.body);
+                jsonList = manager.updateList(listId, req.body);
                 break;
             case HTTPMethod::Delete:
                 manager.deleteList(listId);
