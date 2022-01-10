@@ -28,7 +28,7 @@ rapidjson::Value JsonParser::getJsonValueFromModel(List const &list, rapidjson::
     Value jsonList(kObjectType);
 
     jsonList.AddMember("id", list.getId(), allocator);
-    jsonList.AddMember("name", Value(list.getTitle().c_str(), allocator), allocator);
+    jsonList.AddMember("title", Value(list.getTitle().c_str(), allocator), allocator);
 
 
     Value jsonReminders(kArrayType);
@@ -107,9 +107,9 @@ std::optional<List> JsonParser::convertListToModel(int listId, std::string &requ
     document.Parse(request.c_str());
 
     if (isValidList(document)) {
-        std::string name = document["name"].GetString();
+        std::string title = document["title"].GetString();
         int position = document["position"].GetInt();
-        resultColumn = List(listId, name);
+        resultColumn = List(listId, title);
     }
     return resultColumn;
 }
@@ -150,7 +150,7 @@ bool JsonParser::isValidList(rapidjson::Document const &document) {
     if (document.HasParseError()) {
         isValid = false;
     }
-    if (!document["name"].IsString()) {
+    if (!document["title"].IsString()) {
         isValid = false;
     }
     if (!document["position"].IsInt()) {
