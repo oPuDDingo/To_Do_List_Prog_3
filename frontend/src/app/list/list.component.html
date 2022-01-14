@@ -1,1 +1,14 @@
-<p>list works!</p>
+<div class="list">
+    <div class="list-header">
+        <input
+                #listTitleInput
+                type="text"
+                [value]="this.list.title"
+        />
+        <p>{{list.reminders.length}}</p>
+    </div>
+    <div *ngFor="let reminder of list.reminders">
+        <app-reminder [reminder]="reminder">
+        </app-reminder>
+    </div>
+</div>

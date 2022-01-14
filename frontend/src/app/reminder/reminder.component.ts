@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Reminder} from "../../lib/data-access/models/reminder";
 
 @Component({
   selector: 'app-reminder',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reminder.component.scss']
 })
 export class ReminderComponent implements OnInit {
+
+  reminder : Reminder;
 
   constructor() { }
 
