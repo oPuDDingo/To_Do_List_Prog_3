@@ -246,10 +246,10 @@ std::optional<Reminder> SQLiteRepository::postReminder(int listId, std::string t
     return getReminder(listId, reminderId);
 }
 
-std::optional<ReminderApp::Core::Model::Reminder> SQLiteRepository::putReminder(int listId, int reminderId, std::string title) {
+std::optional<ReminderApp::Core::Model::Reminder> SQLiteRepository::putReminder(int listId, int reminderId, std::string title, std::string date) {
 
     string sqlUpdateReminder =
-            "UPDATE reminder SET title = '" + title +
+            "UPDATE reminder SET title = '" + title + "', date = '" + date + "'"
             " WHERE reminder.list_id = " + to_string(listId) + " AND reminder.id = " + to_string(reminderId);
 
     int result = 0;
@@ -297,9 +297,6 @@ List SQLiteRepository::getListFromCallback(char **fieldValues, int startIndex) {
     index++;
 
     string title = fieldValues[index] ? fieldValues[index] : "";
-    index++;
-
-    index++;
 
     List list(listId, title);
     return list;

@@ -118,7 +118,7 @@ std::string Manager::updateReminder(int listId, int reminderId, std::string body
     }
 
     Reminder reminder = parsedReminderOptional.value();
-    std::optional<Reminder> putReminder = repository.putReminder(listId, reminderId, reminder.getTitle());
+    std::optional<Reminder> putReminder = repository.putReminder(listId, reminderId, reminder.getTitle(), reminder.getDate());
 
     if (putReminder) {
         return parser.convertToApiString(putReminder.value());
