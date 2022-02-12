@@ -1,15 +1,28 @@
 <div class="bb">
 <div id="board">
-    <div class="box">
-        <div class="counter">
-            <h4><img src="/assets/today.png"/>Today<sup> 2 </sup></h4>
-        </div>
-        <div class="counter">
-            <h4><img src="/assets/mark.png"/>Flagged <sup> 2 </sup></h4>
+    <div class="overview">
+        <div class="filter-container">
+            <div class="filter-button">
+                <button><img src="/assets/today.png"/>Today<sup> 2 </sup></button>
+            </div>
+            <div class="filter-button">
+                <button><img src="/assets/mark.png"/>Flagged <sup> 2 </sup></button>
+            </div>
         </div>
 
+        <div class="lists">
+            <ul class="no-padding">
+                <li class="list-card">Something</li>
+                <li class="list-card">Something else</li>
+            </ul>
+            <button class="plus-btn">+</button> <!-- placeholder -->
+        </div>
     </div>
 
+    <div class="list" *ngIf="currentList">
+
+
+    </div>
 
 <!--    <div class="lists">-->
 <!--        <ul *ngIf="board">-->
