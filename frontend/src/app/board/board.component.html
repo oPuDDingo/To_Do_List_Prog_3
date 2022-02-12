@@ -1,28 +1,36 @@
+<div class="bb">
+<div id="board">
+    <div class="box">
+        <div class="counter">
+            <h4><img src="/assets/today.png"/>Today<sup> 2 </sup></h4>
+        </div>
+        <div class="counter">
+            <h4><img src="/assets/mark.png"/>Flagged <sup> 2 </sup></h4>
+        </div>
 
-<div class="board">
-    <div class="list-selection">
-        <button>today</button>
-        <button>flagged</button>
-    </div>
-    <div class="lists">
-        <ul *ngIf="board">
-            <li *ngFor="let list of board.lists">
-                <div class="list-card">
-                    <input #listTitleInput
-                    type="text"
-                    [value]="list.title"
-                    />
-
-                </div>
-            </li>
-        </ul>
-        <button>add</button>
-    </div>
-    <div *ngIf="currentList">
-        <app-list [list]="this.currentList">
-
-        </app-list>
     </div>
 
 
+<!--    <div class="lists">-->
+<!--        <ul *ngIf="board">-->
+<!--            <li *ngFor="let list of board.lists">-->
+<!--                <div class="list-card">-->
+<!--                    <input #listTitleInput-->
+<!--                    type="text"-->
+<!--                    [value]="list.title"-->
+<!--                    />-->
+
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--        <button>add</button>-->
+<!--    </div>-->
+<!--    <div *ngIf="currentList">-->
+<!--        <app-list [list]="this.currentList">-->
+
+<!--        </app-list>-->
+<!--    </div>-->
+
+
+</div>
 </div>
