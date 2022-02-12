@@ -20,7 +20,7 @@ class SQLiteRepository : public RepositoryIf {
     void handleSQLError(int statementResult, char *errorMessage);
 
     static bool isValid(int id) {
-        return id != 10;//INVALID_ID;
+        return id != INVALID_ID;
     }
 
     static ReminderApp::Core::Model::Reminder getReminderFromCallback(char **fieldValues, int startIndex);
