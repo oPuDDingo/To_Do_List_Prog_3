@@ -1,12 +1,18 @@
 
-
-.board {
-
+#board {
+  margin: 15% auto;
+  height: 300px;
+  width:100%;
+  background: transparent;
+  color: #000000;
+  font-family: Arial;
 }
-
+.box {
+  float: left;
+}
 .list-card {
   border-radius: 4px;
-  border: 1px solid #eee;
+  border: 1px solid rgba(238, 238, 238, 0.55);
   background-color: #fafafa;
   height: 20px;
   width: 200px;
@@ -16,3 +22,28 @@
   align-items: center;
   transition: all 0.2s ease-in-out;
 }
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.counter {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 20px;
+  width: 145px;
+  img{
+    width: 30px;
+    margin: 0 10px;
+  }
+  h4 {
+    cursor: help;         //for fun :D
+    color: black;
+    font-family: Arial;
+    text-align: center;
+  }
+}
+
