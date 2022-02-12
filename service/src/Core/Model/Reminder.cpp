@@ -2,7 +2,7 @@
 
 using namespace ReminderApp::Core::Model;
 
-Reminder::Reminder(int id, std::string givenTitle, std::string givenTimestamp) : id(id), title(givenTitle), timestamp(givenTimestamp) {}
+Reminder::Reminder(int id, std::string givenTitle, std::string givenDate) : id(id), title(givenTitle), date(givenDate) {}
 
 int Reminder::getId() const {
     return id;
@@ -12,8 +12,8 @@ std::string Reminder::getTitle() const {
     return title;
 }
 
-std::string Reminder::getTimestamp() const {
-    return timestamp;
+std::string Reminder::getDate() const {
+    return date;
 }
 
 void Reminder::setID(int id) {
@@ -24,6 +24,6 @@ void Reminder::setTitle(std::string title) {
     title = title;
 }
 
-void Reminder::setTimestamp(std::string time) {
-    timestamp = time;
+void Reminder::setDate(std::string time) {
+    date = time;
 }

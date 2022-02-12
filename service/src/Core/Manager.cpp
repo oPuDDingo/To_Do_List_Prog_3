@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Manager.hpp"
 
 using namespace ReminderApp::Core;
@@ -101,7 +102,7 @@ std::string Manager::postReminder(int listId, std::string body) {
     }
 
     Reminder reminder = parsedReminderOptional.value();
-    std::optional<Reminder> postedReminder = repository.postReminder(listId, reminder.getTitle());
+    std::optional<Reminder> postedReminder = repository.postReminder(listId, reminder.getTitle(), reminder.getDate());
     if (postedReminder) {
         return parser.convertToApiString(postedReminder.value());
     } else {

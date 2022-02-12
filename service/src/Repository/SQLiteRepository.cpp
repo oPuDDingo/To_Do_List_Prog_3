@@ -40,7 +40,7 @@ void SQLiteRepository::initialize() {
     string sqlCreateTableList =
         "create table if not exists list("
         "id integer not null primary key autoincrement,"
-        "title text not null;";
+        "title text not null)";
 
     string sqlCreateTableReminder =
         "create table if not exists reminder("
@@ -50,7 +50,8 @@ void SQLiteRepository::initialize() {
         "done bit,"
         "flag bit,"
         "list_id integer not null,"
-        "foreign key (list_id) references list (id));";
+        "foreign key (list_id) references list (id))";
+
 
     result = sqlite3_exec(database, sqlCreateTableList.c_str(), NULL, 0, &errorMessage);
     handleSQLError(result, errorMessage);
@@ -224,12 +225,12 @@ std::optional<Reminder> SQLiteRepository::getReminder(int listId, int reminderId
     }
 }
 
-std::optional<Reminder> SQLiteRepository::postReminder(int listId, std::string title) {
+std::optional<Reminder> SQLiteRepository::postReminder(int listId, std::string title, std::string date) {
 
     string sqlPostReminder =
             "INSERT INTO reminder ('title', 'date', 'list_id')"
             "VALUES ('" +
-            title + "', datetime(), " + to_string(listId) + ");";
+            title + "','" + date + "'," + to_string(listId) + ");";
 
     int result = 0;
     char *errorMessage = nullptr;
@@ -283,11 +284,9 @@ Reminder SQLiteRepository::getReminderFromCallback(char **fieldValues, int start
     string title = fieldValues[index] ? fieldValues[index] : "";
     index++;
 
-    index++;
+    string date = fieldValues[index] ? fieldValues[index] : "";
 
-    string timestamp = fieldValues[index] ? fieldValues[index] : "";
-
-    Reminder reminder(reminderId, title, timestamp);
+    Reminder reminder(reminderId, title, date);
     return reminder;
 }
 

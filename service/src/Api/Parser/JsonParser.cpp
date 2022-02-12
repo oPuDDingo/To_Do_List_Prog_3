@@ -50,7 +50,7 @@ JsonParser::getJsonValueFromModel(Reminder const &reminder, rapidjson::Document:
 
     jsonReminder.AddMember("id", reminder.getId(), allocator);
     jsonReminder.AddMember("title", Value(reminder.getTitle().c_str(), allocator), allocator);
-    jsonReminder.AddMember("timestamp", Value(reminder.getTimestamp().c_str(), allocator), allocator);
+    jsonReminder.AddMember("date", Value(reminder.getDate().c_str(), allocator), allocator);
 
     return jsonReminder;
 }
@@ -122,7 +122,8 @@ std::optional<Reminder> JsonParser::convertReminderToModel(int reminderId, std::
 
     if (isValidReminder(document)) {
         std::string title = document["title"].GetString();
-        resultReminder = Reminder(reminderId, title, "");
+        std::string date = document["date"].GetString();
+        resultReminder = Reminder(reminderId, title, date);
     }
     return resultReminder;
 }
@@ -164,6 +165,9 @@ bool JsonParser::isValidReminder(rapidjson::Document const &document) {
         isValid = false;
     }
     if (!document["title"].IsString()) {
+        isValid = false;
+    }
+    if (!document["date"].IsString()) {
         isValid = false;
     }
 
