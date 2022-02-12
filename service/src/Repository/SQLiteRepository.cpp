@@ -58,6 +58,19 @@ void SQLiteRepository::initialize() {
     handleSQLError(result, errorMessage);
 }
 
+void SQLiteRepository::dropDatabase() {
+    //WARNING: executing this code will WIPE OUT WHOLE DATABASE!!!
+    string dropReminder = "drop table reminder";
+    string dropList = "drop table list";
+
+    int result = 0;
+    char* errorMessage = nullptr;
+    result = sqlite3_exec(database, dropReminder.c_str(), NULL, 0, &errorMessage);
+    handleSQLError(result, errorMessage);
+    result = sqlite3_exec(database, dropList.c_str(), NULL, 0, &errorMessage);
+    handleSQLError(result, errorMessage);
+}
+
 Board SQLiteRepository::getBoard() {
 
     Board board = Board(boardTitle);
@@ -298,7 +311,7 @@ int SQLiteRepository::queryListsCallback(void *data, int numberOfLists, char **f
     auto *pLists = static_cast<std::vector<List> *>(data);
     std::vector<List> &lists = *pLists;
 
-    Reminder reminder = getReminderFromCallback(fieldValues, 3);
+    Reminder reminder = getReminderFromCallback(fieldValues, 2);
 
     int listId = fieldValues[0] ? atoi(fieldValues[0]) : INVALID_ID;
     bool wasListAlreadyAdded = false;

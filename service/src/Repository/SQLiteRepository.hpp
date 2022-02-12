@@ -16,6 +16,7 @@ class SQLiteRepository : public RepositoryIf {
     sqlite3 *database;
 
     void initialize();
+    void dropDatabase();
     void handleSQLError(int statementResult, char *errorMessage);
 
     static bool isValid(int id) {
