@@ -65,17 +65,15 @@ string JsonParser::jsonValueToString(rapidjson::Value const &json) {
 
 string JsonParser::convertToApiString(std::vector<List> &lists) {
 
-    Document document(kObjectType);
+    Document document(rapidjson::kArrayType);
     Document::AllocatorType &allocator = document.GetAllocator();
 
     for (List &list: lists) {
         Value jsonList = getJsonValueFromModel(list, allocator);
         document.PushBack(jsonList, allocator);
-
-        return jsonValueToString(document);
     }
 
-    return EMPTY_JSON;
+    return jsonValueToString(document);
 }
 
 string JsonParser::convertToApiString(Reminder &reminder) {
@@ -92,7 +90,7 @@ string JsonParser::convertToApiString(std::vector<Reminder> &reminders) {
 
     string result = EMPTY_JSON;
 
-    Document document(kObjectType);
+    Document document(rapidjson::kArrayType);
     Document::AllocatorType &allocator = document.GetAllocator();
 
     for (Reminder &reminder: reminders) {
