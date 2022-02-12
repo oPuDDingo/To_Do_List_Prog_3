@@ -1,5 +1,6 @@
 #define RAPIDJSON_ASSERT(x)
 
+#include <iostream>
 #include "JsonParser.hpp"
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/writer.h"
@@ -63,7 +64,6 @@ string JsonParser::jsonValueToString(rapidjson::Value const &json) {
 }
 
 string JsonParser::convertToApiString(std::vector<List> &lists) {
-    string result = EMPTY_JSON;
 
     Document document(kObjectType);
     Document::AllocatorType &allocator = document.GetAllocator();
@@ -74,6 +74,8 @@ string JsonParser::convertToApiString(std::vector<List> &lists) {
 
         return jsonValueToString(document);
     }
+
+    return EMPTY_JSON;
 }
 
 string JsonParser::convertToApiString(Reminder &reminder) {
@@ -108,7 +110,6 @@ std::optional<List> JsonParser::convertListToModel(int listId, std::string &requ
 
     if (isValidList(document)) {
         std::string title = document["title"].GetString();
-        int position = document["position"].GetInt();
         resultColumn = List(listId, title);
     }
     return resultColumn;
@@ -116,13 +117,11 @@ std::optional<List> JsonParser::convertListToModel(int listId, std::string &requ
 
 std::optional<Reminder> JsonParser::convertReminderToModel(int reminderId, std::string &request) {
     std::optional<Reminder> resultReminder;
-
     Document document;
     document.Parse(request.c_str());
 
     if (isValidReminder(document)) {
         std::string title = document["title"].GetString();
-        int position = document["position"].GetInt();
         resultReminder = Reminder(reminderId, title, "");
     }
     return resultReminder;
@@ -138,7 +137,7 @@ rapidjson::Value JsonParser::getJsonValueFromModel(Board &board, rapidjson::Docu
     }
 
     jsonBoard.AddMember("title", Value(board.getTitle().c_str(), allocator), allocator);
-    jsonBoard.AddMember("columns", jsonLists, allocator);
+    jsonBoard.AddMember("lists", jsonLists, allocator);
 
     return jsonBoard;
 }
@@ -153,9 +152,6 @@ bool JsonParser::isValidList(rapidjson::Document const &document) {
     if (!document["title"].IsString()) {
         isValid = false;
     }
-    if (!document["position"].IsInt()) {
-        isValid = false;
-    }
 
     return isValid;
 }
@@ -168,9 +164,6 @@ bool JsonParser::isValidReminder(rapidjson::Document const &document) {
         isValid = false;
     }
     if (!document["title"].IsString()) {
-        isValid = false;
-    }
-    if (!document["position"].IsInt()) {
         isValid = false;
     }
 
