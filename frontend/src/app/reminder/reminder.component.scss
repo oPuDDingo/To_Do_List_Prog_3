@@ -7,7 +7,7 @@
 
 }
 
-.reminder button {
+.reminder-button {
   background-color: transparent;
   border: 1px solid black;
   border-radius: 5px;
@@ -20,7 +20,7 @@
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.reminder button:hover {
+.reminder-button:hover {
   transform: translateY(-4px);
 }
 
@@ -40,13 +40,26 @@
   }
 }
 
+.false:hover {
+  border: 2px solid red;
+}
+
+.true {
+  border-color: red;
+}
+
 .delete {
+  color: black;
   align-self: flex-end;
   margin-left: 10px;
   margin-right: 10px;
   img{
     width: 100%;
   }
+}
+
+.delete:hover {
+  border: 2px solid lawngreen;
 }
 
 .reminder-card {

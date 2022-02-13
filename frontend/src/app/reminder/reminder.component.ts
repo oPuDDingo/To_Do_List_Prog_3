@@ -20,6 +20,9 @@ export class ReminderComponent implements OnInit, AfterViewInit {
   @ViewChild('flag')
   flagImg : ElementRef;
 
+  @ViewChild('flagbtn')
+  flagIBtn : ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -31,10 +34,14 @@ export class ReminderComponent implements OnInit, AfterViewInit {
 
   onFlagClicked() {
     this.reminder.flagged = !this.reminder.flagged;
-    if(this.reminder.flagged)
+    if(this.reminder.flagged) {
       this.flagImg.nativeElement.setAttribute("src", "/assets/markTrue.png");
-    else
+      this.flagIBtn.nativeElement.setAttribute("class", "reminder-button flag true");
+    }
+    else {
       this.flagImg.nativeElement.setAttribute("src", "/assets/markFalse.png");
+      this.flagIBtn.nativeElement.setAttribute("class", "reminder-button flag false");
+    }
   }
 
   updateDate() {
