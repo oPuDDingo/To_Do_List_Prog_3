@@ -1,14 +1,11 @@
 <div class="list">
     <div class="list-header">
-        <input
-                #listTitleInput
-                type="text"
-                [value]="this.list.title"
-        />
-        <p>{{list.reminders.length}}</p>
+        <div class="title-text">{{list.title}}</div>
+        <div class="rounded">{{list.reminders.length}}</div>
     </div>
-    <div *ngFor="let reminder of list.reminders">
-        <app-reminder [reminder]="reminder">
+    <div class="reminder-container">
+        <app-reminder *ngFor="let reminder of list.reminders" [reminder]="reminder">
         </app-reminder>
+        <button class="plus-btn"><img src="/assets/plus.png"/></button>
     </div>
 </div>

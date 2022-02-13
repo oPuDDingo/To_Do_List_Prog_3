@@ -11,7 +11,7 @@
         </div>
 
         <div class="list-container">
-            <div class="list-card" *ngFor="let list of board.lists"><input type="text" [(ngModel)]="list.title"/><button ><img src="/assets/editicon.svg"/></button></div>
+            <div class="list-card" *ngFor="let list of board.lists"><input type="text" maxlength="18" [(ngModel)]="list.title"/><button ><img src="/assets/editicon.svg"/></button></div>
             <button class="plus-btn"><img src="/assets/plus.png"/></button>
         </div>
     </div>
