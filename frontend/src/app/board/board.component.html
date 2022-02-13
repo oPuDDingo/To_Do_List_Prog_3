@@ -15,13 +15,13 @@
 
         <div class="list-container">
             <div class="list-element" *ngFor="let list of board.lists">
-                <div class="list-card">
+                <div class="list-card" (click)="onListCardClicked(list)">
                     <input type="text" maxlength="18" [(ngModel)]="list.title"/>
                     <button ><img src="/assets/editicon.svg"/></button>
                 </div>
-                <button class="delete-button">test</button>
+                <button class="delete-button" (click)="onDeleteClicked(list)">test</button>
             </div>
-            <button class="plus-btn"><img src="/assets/plus.png"/></button>
+            <button class="plus-btn" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
         </div>
     </div>
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Board} from "../../lib/data-access/models/board";
 import {List} from "../../lib/data-access/models/list";
 
+
 @Component({
     selector: 'app-board',
     templateUrl: './board.component.html',
@@ -13,11 +14,13 @@ export class BoardComponent implements OnInit {
     currentList: List;
 
     constructor() {
+
     }
 
     ngOnInit(): void {
-        this.dummyData();
-        this.currentList = this.board.lists[0];
+        this.board = {title: "My Board is the Load", lists: []}
+        // this.dummyData();
+        // this.currentList = this.board.lists[0];
     }
 
     dummyData(): void {
@@ -29,6 +32,22 @@ export class BoardComponent implements OnInit {
                 reminders: [{id: 1, title: "r1", date: "31-12-2002"}, {id: 2, title: "r2", date: "31-12-2003"}]
             }]
         };
+    }
+
+    onListCardClicked(list: List){
+        this.currentList = list;
+    }
+
+    onPlusClicked() {
+        this.board.lists.push({id:1, title:"", reminders: []});
+    }
+
+    onDeleteClicked(list: List){
+        let i: number = this.board.lists.indexOf(list);
+        this.board.lists.splice(i, 1);
+        if(this.currentList === list){
+            this.currentList = undefined;
+        }
     }
 
 }

@@ -4,8 +4,8 @@
         <div class="rounded">{{list.reminders.length}}</div>
     </div>
     <div class="reminder-container">
-        <app-reminder *ngFor="let reminder of list.reminders" [reminder]="reminder">
+        <app-reminder *ngFor="let reminder of list.reminders" [reminder]="reminder" (deleteClicked)="onDeleteClicked($event)">
         </app-reminder>
-        <button class="plus-btn"><img src="/assets/plus.png"/></button>
+        <button class="plus-btn" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
     </div>
 </div>
