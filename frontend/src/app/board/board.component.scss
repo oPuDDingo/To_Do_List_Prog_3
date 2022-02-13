@@ -40,7 +40,6 @@ no-padding {
   margin-right: 20px;
   width: 165px;
 
-
   img {
     width: 30px;
     margin: 0 10px;
@@ -63,7 +62,6 @@ no-padding {
 
   button:hover {
     transform: translateY(-4px);
-    box-shadow: 5px 5px 5px rgba(94, 15, 15, 0.39);
   }
 }
 
@@ -88,8 +86,6 @@ no-padding {
   flex-direction: row;
   justify-content: space-between;
   transition: all 0.2s ease-in-out;
-  float: left;
-  list-style: none;
 }
 
 .list-card input {
@@ -98,18 +94,38 @@ no-padding {
 
 }
 
-.plus-btn {
-  //color: black;
-  //background-color: transparent;
-  //border: 1px black solid;
-  //border-radius: 50px;
-  padding: 0;
+.list-card button {
+  background-color: transparent;
   border: none;
-  background: none;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.list-card button:hover {
+  transform: translateY(-2px);
+}
+
+.round-button {
+  color: black;
+  background-color: transparent;
+  border: 1px black solid;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
   transition: 0.1s;
   transition-timing-function: ease-in-out;
+  padding: 0 0 0 0;
+}
 
-  img{
+.plus-btn {
+  color: black;
+  background-color: transparent;
+  border: none;
+  transition: 0.1s;
+  transition-timing-function: ease-in-out;
+  width: 30px;
+  img {
     width: 30px;
   }
 }
@@ -117,17 +133,4 @@ no-padding {
 .plus-btn:hover {
   transform: translateY(-4px);
 }
-
-.flag-button {
-  padding: 0;
-  border: none;
-  background: none;
-  transition: 0.1s;
-  transition-timing-function: ease-in-out;
-  float: left;
-  img {
-    width: 30px;
-  }
-}
-
 
