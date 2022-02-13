@@ -9,10 +9,6 @@
   height: max-content;
 }
 
-no-padding {
-  padding: 0 0 0 0;
-}
-
 .overview {
   width: 400px;
   margin-right: 100px;
@@ -24,44 +20,52 @@ no-padding {
   height: max-content;
 }
 
-.filter-container {
-  float: left;
-}
-
 
 .filter-container {
+  width: 350px;
   display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto 40px auto;
 }
 
 .filter-button {
-  margin-right: 20px;
-  width: 165px;
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  border: 1px black solid;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  transition: 0.1s;
+  transition-timing-function: ease-in-out;
 
   img {
     width: 30px;
-    margin: 0 10px;
+    height: 30px;
+    margin: auto 5px auto 0;
   }
+}
 
-  button {
-    //cursor: help; //for fun :D
-    color: black;
-    font-family: Arial;
-    font-size: 20px;
-    text-align: center;
-    background-color: transparent;
-    border: 1px black solid;
-    border-radius: 10px;
-    width: 100%;
-    padding: 5px 10px 5px 10px;
-    transition: 0.1s;
-    transition-timing-function: ease-in-out;
-  }
+.filter-text {
+  font-family: Arial;
+  font-size: 20px;
+  margin: auto 0 auto 5px;
+}
 
-  button:hover {
-    transform: translateY(-4px);
-  }
+.filter-button:hover {
+  transform: translateY(-4px);
+}
+
+.filter-counter {
+  height: 27px;
+  width: 30px;
+  border: 1px solid black;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 3px;
+  margin: auto 0 auto 5px;
 }
 
 .list-container {
@@ -132,17 +136,6 @@ no-padding {
   transform: translateY(-4px);
 }
 
-.round-button {
-  color: black;
-  background-color: transparent;
-  border: 1px black solid;
-  border-radius: 50px;
-  width: 30px;
-  height: 30px;
-  transition: 0.1s;
-  transition-timing-function: ease-in-out;
-  padding: 0 0 0 0;
-}
 
 .plus-btn {
   color: black;
