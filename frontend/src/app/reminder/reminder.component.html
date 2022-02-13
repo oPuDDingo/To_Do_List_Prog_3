@@ -1,5 +1,5 @@
 <div class="reminder">
-    <input class="reminder-card" type="text" [(ngModel)]="reminder.title"/>
+    <input #title class="reminder-card" type="text" [(ngModel)]="reminder.title"/>
 <!--    <button class="date"><img src="/assets/calendar.png"/></button>-->
     <input class="date-card" type="date" min="" onfocus="this.min=new Date().toISOString().split('T')[0]"/>
     <button class="flag"><img src="/assets/markFalse.png"/></button>
