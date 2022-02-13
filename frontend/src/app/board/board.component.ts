@@ -38,6 +38,15 @@ export class BoardComponent implements OnInit {
         this.currentList = list;
     }
 
+    onEditClicked(i : number) {
+        document.getElementById("title-input" + i).removeAttribute("disabled");
+        document.getElementById("title-input" + i).focus();
+    }
+
+    disableInput(i : number) {
+        document.getElementById("title-input"+i).setAttribute("disabled", "disabled");
+    }
+
     onPlusClicked() {
         this.board.lists.push({id:1, title:"", reminders: []});
     }
