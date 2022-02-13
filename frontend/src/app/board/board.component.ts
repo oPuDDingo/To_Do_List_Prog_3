@@ -11,7 +11,7 @@ import {List} from "../../lib/data-access/models/list";
 export class BoardComponent implements OnInit {
 
     board: Board;
-    currentList: List;
+    currentList?: List;
 
     constructor() {
 
@@ -23,7 +23,7 @@ export class BoardComponent implements OnInit {
         // this.currentList = this.board.lists[0];
     }
 
-    dummyData(): void {
+  /*  dummyData(): void {
         //this.board = {"", [{1, "stuff", []}, {2, "stuff2", []}]};
         this.board = {title: "test",
             lists: [{id: 1, title: "stuff", reminders: [{id: 1, title: "r1", date: "31-12-2001"}, {id: 2, title: "r2", date: "31-12-2005"}]}, {
@@ -32,7 +32,7 @@ export class BoardComponent implements OnInit {
                 reminders: [{id: 1, title: "r1", date: "31-12-2002"}, {id: 2, title: "r2", date: "31-12-2003"}]
             }]
         };
-    }
+    }*/
 
     onListCardClicked(list: List){
         this.currentList = list;

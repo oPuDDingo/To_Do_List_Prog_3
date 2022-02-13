@@ -17,6 +17,9 @@ export class ReminderComponent implements OnInit, AfterViewInit {
   @ViewChild('title')
   inputField : ElementRef;
 
+  @ViewChild('flag')
+  flagImg : ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -26,7 +29,21 @@ export class ReminderComponent implements OnInit, AfterViewInit {
     this.inputField.nativeElement.focus();
   }
 
+  onFlagClicked() {
+    this.reminder.flagged = !this.reminder.flagged;
+    if(this.reminder.flagged)
+      this.flagImg.nativeElement.setAttribute("src", "/assets/markTrue.png");
+    else
+      this.flagImg.nativeElement.setAttribute("src", "/assets/markFalse.png");
+  }
+
+  updateDate() {
+
+  }
+
   onDeleteClicked(){
     this.deleteClicked.emit(this.reminder);
   }
+
+
 }

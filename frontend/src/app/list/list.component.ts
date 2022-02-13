@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   }
 
   onPlusClicked() {
-    this.list.reminders.push({id: 1, title: "", date: ""});
+    this.list.reminders.push({id: 1, title: "", date: "", flagged: false});
   }
 
   onDeleteClicked(reminder: Reminder) {
