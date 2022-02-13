@@ -116,6 +116,9 @@
   margin-right: 10px;
   transition: 0.1s;
   transition-timing-function: ease-in-out;
+  img{
+    width: 200%;
+  }
 }
 
 .list-card button:hover {
@@ -132,6 +135,10 @@
   transition: 0.1s;
   transition-timing-function: ease-in-out;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+  img{
+    width: 100%;
+  }
 }
 
 .delete-button:hover {

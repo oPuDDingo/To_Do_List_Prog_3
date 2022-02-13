@@ -17,9 +17,9 @@
             <div class="list-element" *ngFor="let list of board.lists">
                 <div class="list-card" (click)="onListCardClicked(list)">
                     <input type="text" maxlength="18" [(ngModel)]="list.title"/>
-                    <button ><img src="/assets/editicon.svg"/></button>
+                    <button ><img src="/assets/edit.png"/></button>
                 </div>
-                <button class="delete-button" (click)="onDeleteClicked(list)">test</button>
+                <button class="delete-button" (click)="onDeleteClicked(list)"> <img src="/assets/trash.png"/></button>
             </div>
             <button class="plus-btn" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
         </div>
