@@ -19,6 +19,7 @@
                     <input id="{{'title-input'+i}}" type="text" maxlength="18" (blur)="focusOutTitleInput(i)" [focusMe]="true" [(ngModel)]="list.title"/>
                     <button (click)="onEditClicked(i, $event)"><img src="/assets/edit.png"/></button>
                 </div>
+                <div class="rounded"> {{list.reminders.length}}</div>
                 <button class="delete-button" (click)="onDeleteClicked(list)"> <img src="/assets/trash.png"/></button>
             </div>
             <button class="plus-btn" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
