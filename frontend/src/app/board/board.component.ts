@@ -39,12 +39,16 @@ export class BoardComponent implements OnInit {
     }
 
     onEditClicked(i: number, e: Event) {
-        document.getElementById("title-input" + i).removeAttribute("readonly");
-        document.getElementById("title-input" + i).focus();
+        this.focusTitleInput(i)
         e.stopPropagation()
     }
 
-    disableInput(i : number) {
+    focusTitleInput(i: number) : void {
+        document.getElementById("title-input" + i).removeAttribute("readonly");
+        document.getElementById("title-input" + i).focus();
+    }
+
+    focusOutTitleInput(i : number) {
         document.getElementById("title-input"+i).setAttribute("readonly", "readonly");
     }
 
