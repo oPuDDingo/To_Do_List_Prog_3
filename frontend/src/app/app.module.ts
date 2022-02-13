@@ -7,11 +7,12 @@ import { ListComponent } from './list/list.component';
 import { ReminderComponent } from './reminder/reminder.component';
 import { ToolbarComponent } from "../lib/ui/toolbar/toolbar.component";
 import {FormsModule} from "@angular/forms";
+import {FocusDirective} from "../lib/util/autofocus.directive";
 
 
 
 @NgModule({
-  declarations: [AppComponent, BoardComponent, ListComponent, ReminderComponent, ToolbarComponent],
+  declarations: [AppComponent, BoardComponent, ListComponent, ReminderComponent, ToolbarComponent, FocusDirective],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
