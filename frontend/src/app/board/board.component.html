@@ -16,8 +16,8 @@
         <div class="list-container">
             <div class="list-element" *ngFor="let list of board.lists; let i = index">
                 <div class="list-card" (click)="onListCardClicked(list)">
-                    <input id="{{'title-input'+i}}" type="text" maxlength="18" disabled="disabled" (blur)="disableInput(i)" [(ngModel)]="list.title"/>
-                    <button (click)="onEditClicked(i)"><img src="/assets/edit.png"/></button>
+                    <input id="{{'title-input'+i}}" type="text" maxlength="18" readonly="readonly" (blur)="disableInput(i)" [(ngModel)]="list.title"/>
+                    <button (click)="onEditClicked(i, $event)"><img src="/assets/edit.png"/></button>
                 </div>
                 <button class="delete-button" (click)="onDeleteClicked(list)"> <img src="/assets/trash.png"/></button>
             </div>
