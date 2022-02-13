@@ -43,6 +43,7 @@
 .delete {
   align-self: flex-end;
   margin-left: 10px;
+  margin-right: 10px;
   img{
     width: 100%;
   }
@@ -63,5 +64,23 @@
 }
 
 .reminder-card:hover {
+  transform: translateY(-3px);
+}
+
+.date-card{
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 36px;
+  width: 180px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  transition: 0.1s;
+  transition-timing-function: ease-in-out;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.date-card:hover {
   transform: translateY(-3px);
 }

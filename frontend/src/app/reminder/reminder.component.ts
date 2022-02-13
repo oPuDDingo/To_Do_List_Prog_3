@@ -19,6 +19,8 @@ export class ReminderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
   onDeleteClicked(){
     this.deleteClicked.emit(this.reminder);
   }
