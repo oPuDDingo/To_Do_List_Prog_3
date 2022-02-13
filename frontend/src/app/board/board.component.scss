@@ -115,13 +115,14 @@
 .list-card button {
   background-color: transparent;
   border: none;
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  margin: auto 10px auto 0;
   transition: 0.1s;
   transition-timing-function: ease-in-out;
   img{
-    width: 200%;
+    width: 24px;
+    height: 24px;
   }
 }
 
