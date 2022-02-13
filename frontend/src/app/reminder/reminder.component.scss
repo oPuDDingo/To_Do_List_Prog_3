@@ -15,6 +15,12 @@
   width: 36px;
   margin-top: auto;
   margin-bottom: auto;
+  transition: 0.1s;
+  transition-timing-function: ease-in-out;
+}
+
+.reminder button:hover {
+  transform: translateY(-4px);
 }
 
 .date {

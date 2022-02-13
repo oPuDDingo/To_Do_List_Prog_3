@@ -3,12 +3,7 @@ body {
   overflow: hidden;
 }
 
-
 .content {
-  //display: flex;
-  margin: 82px auto 32px;
-  padding: 0 16px;
-  max-width: 960px;
-  flex-direction: column;
-  align-items: center;
+  margin: 125px auto;
+  width: max-content;
 }
