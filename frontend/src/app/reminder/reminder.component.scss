@@ -11,8 +11,8 @@
   background-color: transparent;
   border: 1px solid black;
   border-radius: 5px;
-  height: 36px;
-  width: 36px;
+  height: 40px;
+  width: 40px;
   margin-top: auto;
   margin-bottom: auto;
   transition: 0.1s;
@@ -40,8 +40,13 @@
   }
 }
 
-.false:hover {
-  border: 2px solid red;
+.flag:hover {
+  border: 3px solid red;
+  padding: -2px;
+}
+
+.false {
+  border-color: black;
 }
 
 .true {
@@ -59,7 +64,8 @@
 }
 
 .delete:hover {
-  border: 2px solid lawngreen;
+  border: 3px solid lawngreen;
+
 }
 
 .reminder-card {
@@ -95,5 +101,6 @@
 }
 
 .date-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  border: 3px solid #01d0ff;
 }
