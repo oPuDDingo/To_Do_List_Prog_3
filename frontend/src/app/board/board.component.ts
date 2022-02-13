@@ -38,13 +38,14 @@ export class BoardComponent implements OnInit {
         this.currentList = list;
     }
 
-    onEditClicked(i : number) {
-        document.getElementById("title-input" + i).removeAttribute("disabled");
+    onEditClicked(i: number, e: Event) {
+        document.getElementById("title-input" + i).removeAttribute("readonly");
         document.getElementById("title-input" + i).focus();
+        e.stopPropagation()
     }
 
     disableInput(i : number) {
-        document.getElementById("title-input"+i).setAttribute("disabled", "disabled");
+        document.getElementById("title-input"+i).setAttribute("readonly", "readonly");
     }
 
     onPlusClicked() {

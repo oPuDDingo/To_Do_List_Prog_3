@@ -108,6 +108,10 @@
 
 }
 
+.list-card input:hover {
+  cursor: default;
+}
+
 .list-card button {
   background-color: transparent;
   border: none;
