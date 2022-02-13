@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {List} from "../../lib/data-access/models/list";
 
 @Component({
@@ -8,6 +8,7 @@ import {List} from "../../lib/data-access/models/list";
 })
 export class ListComponent implements OnInit {
 
+  @Input()
   list : List;
 
   constructor() { }

@@ -17,15 +17,16 @@ export class BoardComponent implements OnInit {
 
     ngOnInit(): void {
         this.dummyData();
+        this.currentList = this.board.lists[0];
     }
 
     dummyData(): void {
         //this.board = {"", [{1, "stuff", []}, {2, "stuff2", []}]};
         this.board = {title: "test",
-            lists: [{id: 1, title: "stuff", reminders: [{id: 1, title: "r1"}, {id: 2, title: "r2"}]}, {
+            lists: [{id: 1, title: "stuff", reminders: [{id: 1, title: "r1", date: "31-12-2001"}, {id: 2, title: "r2", date: "31-12-2005"}]}, {
                 id: 2,
                 title: "stuff2",
-                reminders: [{id: 1, title: "r1"}, {id: 2, title: "r2"}]
+                reminders: [{id: 1, title: "r1", date: "31-12-2002"}, {id: 2, title: "r2", date: "31-12-2003"}]
             }]
         };
     }

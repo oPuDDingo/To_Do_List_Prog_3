@@ -88,6 +88,10 @@ no-padding {
   transition: all 0.2s ease-in-out;
 }
 
+.list-card:hover {
+  transform: translateY(-3px);
+}
+
 .list-card input {
   font-size: 20px;
   font-family: Arial;
@@ -100,6 +104,8 @@ no-padding {
   width: 25px;
   height: 25px;
   margin-right: 10px;
+  transition: 0.1s;
+  transition-timing-function: ease-in-out;
 }
 
 .list-card button:hover {

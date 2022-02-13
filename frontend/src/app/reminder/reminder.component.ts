@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Reminder} from "../../lib/data-access/models/reminder";
 
 @Component({
@@ -8,6 +8,7 @@ import {Reminder} from "../../lib/data-access/models/reminder";
 })
 export class ReminderComponent implements OnInit {
 
+  @Input()
   reminder : Reminder;
 
   constructor() { }
