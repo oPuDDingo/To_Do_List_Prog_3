@@ -39,7 +39,7 @@ rapidjson::Value JsonParser::getJsonValueFromModel(List const &list, rapidjson::
         jsonReminders.PushBack(jsonReminder, allocator);
     }
 
-    jsonList.AddMember("items", jsonReminders, allocator);
+    jsonList.AddMember("reminders", jsonReminders, allocator);
 
     return jsonList;
 }
@@ -51,6 +51,7 @@ JsonParser::getJsonValueFromModel(Reminder const &reminder, rapidjson::Document:
     jsonReminder.AddMember("id", reminder.getId(), allocator);
     jsonReminder.AddMember("title", Value(reminder.getTitle().c_str(), allocator), allocator);
     jsonReminder.AddMember("date", Value(reminder.getDate().c_str(), allocator), allocator);
+    jsonReminder.AddMember("flagged", reminder.isFlagged(), allocator);
 
     return jsonReminder;
 }
@@ -117,11 +118,12 @@ std::optional<Reminder> JsonParser::convertReminderToModel(int reminderId, std::
     std::optional<Reminder> resultReminder;
     Document document;
     document.Parse(request.c_str());
-
+    cout << request << " " << to_string(isValidReminder(document));
     if (isValidReminder(document)) {
         std::string title = document["title"].GetString();
         std::string date = document["date"].GetString();
-        resultReminder = Reminder(reminderId, title, date);
+        bool flagged = document["flagged"].GetBool();
+        resultReminder = Reminder(reminderId, title, date, flagged);
     }
     return resultReminder;
 }
@@ -166,6 +168,9 @@ bool JsonParser::isValidReminder(rapidjson::Document const &document) {
         isValid = false;
     }
     if (!document["date"].IsString()) {
+        isValid = false;
+    }
+    if (!document["flagged"].IsBool()) {
         isValid = false;
     }
 

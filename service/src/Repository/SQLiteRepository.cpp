@@ -48,7 +48,7 @@ void SQLiteRepository::initialize() {
         "title text not null,"
         "date text not null,"
         "done bit,"
-        "flag bit,"
+        "flagged bit,"
         "list_id integer not null,"
         "foreign key (list_id) references list (id))";
 
@@ -87,7 +87,7 @@ std::vector<List> SQLiteRepository::getLists() {
     std::vector<List> lists;
 
     string sqlQueryLists =
-            "SELECT list.id, list.title, reminder.id, reminder.title, reminder.date from list "
+            "SELECT list.id, list.title, reminder.id, reminder.title, reminder.date, reminder.flagged from list "
             "left join reminder on reminder.list_id = list.id "
             "order by list.id, reminder.id";
 
@@ -105,7 +105,7 @@ std::optional<List> SQLiteRepository::getList(int id) {
     std::vector<List> lists;
 
     string sqlQueryLists =
-            "SELECT list.id, list.title, reminder.id, reminder.title, reminder.date from list "
+            "SELECT list.id, list.title, reminder.id, reminder.title, reminder.date, reminder.flagged from list "
             "left join reminder on reminder.list_id = list.id where list.id = " +
             to_string(id) +
             " order by list.id, reminder.id";
@@ -188,7 +188,7 @@ std::vector<Reminder> SQLiteRepository::getReminders(int listId) {
     std::vector<Reminder> reminders;
 
     string sqlQueryReminders =
-            "SELECT reminder.id, reminder.title, reminder.date from reminder "
+            "SELECT reminder.id, reminder.title, reminder.date, reminder.flagged from reminder "
             "where reminder.list_id = " +
             std::to_string(listId) +
             " order by reminder.id";
@@ -207,7 +207,7 @@ std::optional<Reminder> SQLiteRepository::getReminder(int listId, int reminderId
     std::vector<Reminder> reminders;
 
     string sqlQueryReminders =
-            "SELECT reminder.id, reminder.title, reminder.date from reminder "
+            "SELECT reminder.id, reminder.title, reminder.date, reminder.flagged from reminder "
             "where reminder.list_id = " +
             std::to_string(listId) + " and reminder.id = " + std::to_string(reminderId) +
             " order by reminder.id";
@@ -225,12 +225,12 @@ std::optional<Reminder> SQLiteRepository::getReminder(int listId, int reminderId
     }
 }
 
-std::optional<Reminder> SQLiteRepository::postReminder(int listId, std::string title, std::string date) {
+std::optional<Reminder> SQLiteRepository::postReminder(int listId, std::string title, std::string date, bool flagged) {
 
     string sqlPostReminder =
-            "INSERT INTO reminder ('title', 'date', 'list_id')"
+            "INSERT INTO reminder ('title', 'date', 'list_id', 'flagged')"
             "VALUES ('" +
-            title + "','" + date + "'," + to_string(listId) + ");";
+            title + "','" + date + "'," + to_string(listId) + "," + std::to_string(flagged ? 1 : 0) + ");";
 
     int result = 0;
     char *errorMessage = nullptr;
@@ -246,10 +246,10 @@ std::optional<Reminder> SQLiteRepository::postReminder(int listId, std::string t
     return getReminder(listId, reminderId);
 }
 
-std::optional<ReminderApp::Core::Model::Reminder> SQLiteRepository::putReminder(int listId, int reminderId, std::string title, std::string date) {
+std::optional<ReminderApp::Core::Model::Reminder> SQLiteRepository::putReminder(int listId, int reminderId, std::string title, std::string date, bool flagged) {
 
     string sqlUpdateReminder =
-            "UPDATE reminder SET title = '" + title + "', date = '" + date + "'"
+            "UPDATE reminder SET title = '" + title + "', date = '" + date + "', flagged = " + to_string(flagged) +
             " WHERE reminder.list_id = " + to_string(listId) + " AND reminder.id = " + to_string(reminderId);
 
     int result = 0;
@@ -285,8 +285,11 @@ Reminder SQLiteRepository::getReminderFromCallback(char **fieldValues, int start
     index++;
 
     string date = fieldValues[index] ? fieldValues[index] : "";
+    index++;
 
-    Reminder reminder(reminderId, title, date);
+    bool flagged = fieldValues[index] ? atoi(fieldValues[index]) : false;
+
+    Reminder reminder(reminderId, title, date, flagged);
     return reminder;
 }
 

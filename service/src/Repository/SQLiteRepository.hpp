@@ -41,8 +41,8 @@ class SQLiteRepository : public RepositoryIf {
     virtual void deleteList(int id);
     virtual std::vector<ReminderApp::Core::Model::Reminder> getReminders(int listId);
     virtual std::optional<ReminderApp::Core::Model::Reminder> getReminder(int listId, int reminderId);
-    virtual std::optional<ReminderApp::Core::Model::Reminder> postReminder(int listId, std::string title, std::string date);
-    virtual std::optional<ReminderApp::Core::Model::Reminder> putReminder(int listId, int reminderId, std::string title, std::string date);
+    virtual std::optional<ReminderApp::Core::Model::Reminder> postReminder(int listId, std::string title, std::string date, bool flagged);
+    virtual std::optional<ReminderApp::Core::Model::Reminder> putReminder(int listId, int reminderId, std::string title, std::string date, bool flagged);
 
     virtual void deleteReminder(int listId, int reminderId);
     static inline std::string const boardTitle = "Kanban Board";

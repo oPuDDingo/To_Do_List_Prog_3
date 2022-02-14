@@ -9,7 +9,7 @@ int List::getId() const {
 }
 
 void List::setId(int id) {
-    id = id;
+    this->id = id;
 }
 
 std::string List::getTitle() const {
@@ -17,7 +17,7 @@ std::string List::getTitle() const {
 }
 
 void List::setTitle(std::string title) {
-    title = title;
+    this->title = title;
 }
 
 std::vector<Reminder> List::getReminders() const {

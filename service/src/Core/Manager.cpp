@@ -102,7 +102,7 @@ std::string Manager::postReminder(int listId, std::string body) {
     }
 
     Reminder reminder = parsedReminderOptional.value();
-    std::optional<Reminder> postedReminder = repository.postReminder(listId, reminder.getTitle(), reminder.getDate());
+    std::optional<Reminder> postedReminder = repository.postReminder(listId, reminder.getTitle(), reminder.getDate(), reminder.isFlagged());
     if (postedReminder) {
         return parser.convertToApiString(postedReminder.value());
     } else {
@@ -118,7 +118,7 @@ std::string Manager::updateReminder(int listId, int reminderId, std::string body
     }
 
     Reminder reminder = parsedReminderOptional.value();
-    std::optional<Reminder> putReminder = repository.putReminder(listId, reminderId, reminder.getTitle(), reminder.getDate());
+    std::optional<Reminder> putReminder = repository.putReminder(listId, reminderId, reminder.getTitle(), reminder.getDate(), reminder.isFlagged());
 
     if (putReminder) {
         return parser.convertToApiString(putReminder.value());
