@@ -10,6 +10,7 @@ export class ReminderComponent implements OnInit, AfterViewInit {
 
   @Input()
   reminder : Reminder;
+  test : string;
 
   @Output()
   deleteClicked: EventEmitter<Reminder> = new EventEmitter<Reminder>();
@@ -22,6 +23,9 @@ export class ReminderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('flagbtn')
   flagIBtn : ElementRef;
+
+  @ViewChild('date')
+  inputeDate : ElementRef;
 
   constructor() { }
 
@@ -44,12 +48,12 @@ export class ReminderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  updateDate() {
-
-  }
-
   onDeleteClicked(){
     this.deleteClicked.emit(this.reminder);
+  }
+
+  updateDate() {
+
   }
 
 
