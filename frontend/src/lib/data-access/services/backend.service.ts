@@ -10,7 +10,7 @@ import {Reminder} from "../models/reminder";
     providedIn: "root",
 })
 export class BackendService {
-    readonly url: string = "http://localhost:8080";
+    readonly url: string = "http://localhost:4200";
 
     constructor(private client: HttpClient) {
     }

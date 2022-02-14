@@ -64,7 +64,11 @@ export class BoardComponent implements OnInit {
     }
 
     onPlusClicked() {
-        this.board.lists.push({id:1, title:"", reminders: []});
+        let createdList : List = {title:"", reminders: []};
+        this.board.lists.push(createdList);
+        this.service.createList(createdList).subscribe((list) => {
+           createdList.id = list.id;
+        });
     }
 
     onDeleteClicked(list: List){
@@ -73,6 +77,7 @@ export class BoardComponent implements OnInit {
         if(this.currentList === list){
             this.currentList = undefined;
         }
+        this.service.deleteList(list.id).subscribe();
     }
 
     onTodayClicked(){
