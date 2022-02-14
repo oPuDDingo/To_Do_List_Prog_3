@@ -1,15 +1,15 @@
 <div id="board">
     <div class="overview">
         <div class="filter-container">
-            <div class="filter-button">
+            <div class="filter-button" (click)="onTodayClicked()">
                 <img src="/assets/today.png"/>
                 <div class="filter-text">Today</div>
-                <div class="filter-counter">2</div>
+                <div class="rounded">{{today.reminders.length}}</div>
             </div>
-            <div class="filter-button">
+            <div class="filter-button" (click)="onFlaggedClicked()">
                 <img src="/assets/mark.png"/>
                 <div class="filter-text">Flagged</div>
-                <div class="filter-counter">2</div>
+                <div class="rounded">{{flagged.reminders.length}}</div>
             </div>
         </div>
 
@@ -27,8 +27,7 @@
     </div>
 
     <div *ngIf="currentList">
-        <app-list [list]="this.currentList"></app-list>
+        <app-list [list]="this.currentList" [showAddButton]="showAddButton"></app-list>
     </div>
-
 
 </div>

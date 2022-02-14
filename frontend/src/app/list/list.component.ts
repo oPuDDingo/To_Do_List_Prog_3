@@ -12,6 +12,9 @@ export class ListComponent implements OnInit {
   @Input()
   list : List;
 
+  @Input()
+  showAddButton: boolean;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -25,4 +28,6 @@ export class ListComponent implements OnInit {
     let i: number = this.list.reminders.indexOf(reminder);
     this.list.reminders.splice(i, 1);
   }
+
+
 }
