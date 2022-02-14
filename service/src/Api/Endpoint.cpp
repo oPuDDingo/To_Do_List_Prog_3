@@ -19,6 +19,8 @@ void Endpoint::registerRoutes() {
     CROW_ROUTE(app, "/api/board")
     ([this](const request &req, response &res) {
         res.write(manager.getBoard());
+        res.add_header("Access-Control-Allow-Origin", "*");
+        res.add_header("Access-Control-Allow-Headers", "Content-Type");
         res.end();
     });
 

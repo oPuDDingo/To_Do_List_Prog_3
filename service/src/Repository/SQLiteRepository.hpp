@@ -45,7 +45,7 @@ class SQLiteRepository : public RepositoryIf {
     virtual std::optional<ReminderApp::Core::Model::Reminder> putReminder(int listId, int reminderId, std::string title, std::string date, bool flagged);
 
     virtual void deleteReminder(int listId, int reminderId);
-    static inline std::string const boardTitle = "Kanban Board";
+    static inline std::string const boardTitle = "My Board is the Lord";
 
     static inline int const INVALID_ID = -1;
 
