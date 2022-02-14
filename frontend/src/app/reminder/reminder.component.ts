@@ -34,10 +34,15 @@ export class ReminderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.inputField.nativeElement.focus();
+    this.setFlagIcon();
   }
 
   onFlagClicked() {
     this.reminder.flagged = !this.reminder.flagged;
+    this.setFlagIcon();
+  }
+
+  setFlagIcon(){
     if(this.reminder.flagged) {
       this.flagImg.nativeElement.setAttribute("src", "/assets/markTrue.png");
       this.flagIBtn.nativeElement.setAttribute("class", "reminder-button flag true");

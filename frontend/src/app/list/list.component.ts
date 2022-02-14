@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {List} from "../../lib/data-access/models/list";
 import {Reminder} from "../../lib/data-access/models/reminder";
 
@@ -13,7 +13,10 @@ export class ListComponent implements OnInit {
   list : List;
 
   @Input()
-  showAddButton: boolean;
+  isFilterList: boolean;
+
+  @Output()
+  reminderDeleted: EventEmitter<Reminder> = new EventEmitter<Reminder>();
 
   constructor() { }
 
@@ -27,7 +30,11 @@ export class ListComponent implements OnInit {
   onDeleteClicked(reminder: Reminder) {
     let i: number = this.list.reminders.indexOf(reminder);
     this.list.reminders.splice(i, 1);
+    if(this.isFilterList){
+      this.reminderDeleted.emit(reminder);
+    }
   }
+
 
 
 }

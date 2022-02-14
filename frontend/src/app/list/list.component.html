@@ -6,6 +6,6 @@
     <div class="reminder-container">
         <app-reminder *ngFor="let reminder of list.reminders" [reminder]="reminder" (deleteClicked)="onDeleteClicked($event)">
         </app-reminder>
-        <button class="plus-btn" *ngIf="showAddButton" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
+        <button class="plus-btn" *ngIf="!isFilterList" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
     </div>
 </div>

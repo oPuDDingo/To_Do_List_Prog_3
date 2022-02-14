@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Board} from "../../lib/data-access/models/board";
 import {List} from "../../lib/data-access/models/list";
+import {Reminder} from "../../lib/data-access/models/reminder";
 
 
 @Component({
@@ -14,7 +15,7 @@ export class BoardComponent implements OnInit {
     currentList?: List;
     flagged: List;
     today: List;
-    showAddButton: boolean;
+    isFilterList: boolean;
 
 
     constructor() {
@@ -40,7 +41,7 @@ export class BoardComponent implements OnInit {
     // }
 
     onListCardClicked(list: List){
-        this.showAddButton = true;
+        this.isFilterList = false;
         this.currentList = list;
     }
 
@@ -71,13 +72,13 @@ export class BoardComponent implements OnInit {
     }
 
     onTodayClicked(){
-        this.showAddButton = false;
+        this.isFilterList = true;
         this.updateFilterLists();
         this.currentList = this.today;
     }
 
     onFlaggedClicked(){
-        this.showAddButton = false;
+        this.isFilterList = true;
         this.updateFilterLists();
         this.currentList = this.flagged;
     }
@@ -87,11 +88,23 @@ export class BoardComponent implements OnInit {
         this.today.reminders.splice(0, this.today.reminders.length);
         for(var i = 0; i < this.board.lists.length; i++) {
             for(var j = 0; j < this.board.lists[i].reminders.length; j++){
-                if(this.board.lists[i].reminders[j].flagged === true){
+                if(this.board.lists[i].reminders[j].flagged){
                     this.flagged.reminders.push(this.board.lists[i].reminders[j]);
                 }
                 if(this.board.lists[i].reminders[j].date === new Date().toISOString().split('T')[0]){
                     this.today.reminders.push(this.board.lists[i].reminders[j]);
+                }
+            }
+        }
+    }
+
+    deleteReminder(reminder: Reminder){
+        outer:
+        for(var i = 0; i < this.board.lists.length; i++){
+            for(var j = 0; j < this.board.lists[i].reminders.length; j++){
+                if(this.board.lists[i].reminders[j] == reminder){
+                    this.board.lists[i].reminders.splice(j, 1);
+                    break outer;
                 }
             }
         }

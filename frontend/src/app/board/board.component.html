@@ -27,7 +27,7 @@
     </div>
 
     <div *ngIf="currentList">
-        <app-list [list]="this.currentList" [showAddButton]="showAddButton"></app-list>
+        <app-list [list]="this.currentList" [isFilterList]="isFilterList" (reminderDeleted)="deleteReminder($event)"></app-list>
     </div>
 
 </div>
