@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Board} from "../../lib/data-access/models/board";
-import {List} from "../../lib/data-access/models/list";
-import {Reminder} from "../../lib/data-access/models/reminder";
-import {BackendService} from "../../lib/data-access/services/backend.service";
+import {Board} from "../../data-access/models/board";
+import {List} from "../../data-access/models/list";
+import {Reminder} from "../../data-access/models/reminder";
+import {BackendService} from "../../data-access/services/backend.service";
 
 
 @Component({
-    selector: 'app-board',
+    selector: 'board',
     templateUrl: './board.component.html',
     styleUrls: ['./board.component.scss']
 })

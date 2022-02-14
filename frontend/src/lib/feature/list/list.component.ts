@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {List} from "../../lib/data-access/models/list";
-import {Reminder} from "../../lib/data-access/models/reminder";
+import {List} from "../../data-access/models/list";
+import {Reminder} from "../../data-access/models/reminder";
 
 @Component({
-  selector: 'app-list',
+  selector: 'list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })

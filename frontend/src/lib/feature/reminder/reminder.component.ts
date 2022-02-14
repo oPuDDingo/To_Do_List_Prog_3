@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {Reminder} from "../../lib/data-access/models/reminder";
+import {Reminder} from "../../data-access/models/reminder";
 
 @Component({
-  selector: 'app-reminder',
+  selector: 'reminder',
   templateUrl: './reminder.component.html',
   styleUrls: ['./reminder.component.scss']
 })
