@@ -10,7 +10,7 @@ import {Reminder} from "../models/reminder";
     providedIn: "root",
 })
 export class BackendService {
-    readonly url: string = "http://0.0.0.0:8080";
+    readonly url: string = "http://localhost:8080";
 
     constructor(private client: HttpClient) {
     }
@@ -55,5 +55,5 @@ export class BackendService {
 
         return this.client.put<Reminder>(this.url + "/api/board/lists/" + listId + "/reminders/" + reminderId, reminderPayload);
     }
-    
+
 }

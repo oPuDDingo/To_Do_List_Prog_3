@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Board} from "../../lib/data-access/models/board";
 import {List} from "../../lib/data-access/models/list";
 import {Reminder} from "../../lib/data-access/models/reminder";
+import {BackendService} from "../../lib/data-access/services/backend.service";
 
 
 @Component({
@@ -18,13 +19,16 @@ export class BoardComponent implements OnInit {
     isFilterList: boolean;
 
 
-    constructor() {
+    constructor(private service: BackendService) {
     }
 
     ngOnInit(): void {
-        this.board = {title: "My Board is the Load", lists: []};
-        this.flagged = {title: "flagged", reminders: []};
-        this.today = {title: "today", reminders: []};
+        this.flagged = {title: "Flagged", reminders: []};
+        this.today = {title: "Today", reminders: []};
+        this.service.loadBoard().subscribe((board) => {
+            this.board = board;
+            this.updateFilterLists();
+        })
         // this.dummyData();
         // this.currentList = this.board.lists[0];
     }
