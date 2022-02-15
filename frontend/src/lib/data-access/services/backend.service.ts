@@ -48,12 +48,12 @@ export class BackendService {
         return this.client.delete<void>(this.url + "/api/board/lists/" + listId + "/reminders/" + reminderId);
     }
 
-    updateReminder(listId: number, reminderId: number, reminder: Partial<Reminder>): Observable<Reminder> {
+    updateReminder(listId: number, reminder: Partial<Reminder>): Observable<Reminder> {
         let reminderPayload = {
             ...reminder,
         };
 
-        return this.client.put<Reminder>(this.url + "/api/board/lists/" + listId + "/reminders/" + reminderId, reminderPayload);
+        return this.client.put<Reminder>(this.url + "/api/board/lists/" + listId + "/reminders/" + reminder.id, reminderPayload);
     }
 
 }

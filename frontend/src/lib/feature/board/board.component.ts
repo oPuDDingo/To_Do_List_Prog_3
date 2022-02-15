@@ -39,13 +39,14 @@ export class BoardComponent implements OnInit {
     createList() : void {
         let createdList : List = {title:"", reminders: []};
         this.board.lists.push(createdList);
+
         this.service.createList(createdList).subscribe((list) => {
             createdList.id = list.id;
         });
     }
 
     updateList(list: List) : void {
-        console.log("update list");
+        this.service.updateList(list).subscribe();
     }
 
     deleteList(list: List) : void{
@@ -54,33 +55,39 @@ export class BoardComponent implements OnInit {
         if(this.currentList === list){
             this.currentList = undefined;
         }
+
         this.service.deleteList(list.id).subscribe();
     }
 
     createReminder(list: List) {
         let createdReminder : Reminder = {title: "", date:"", flagged: false};
         list.reminders.push(createdReminder);
+
+        this.service.createReminder(list.id, createdReminder).subscribe((reminder) => {
+           createdReminder.id = reminder.id;
+        });
     }
 
     updateReminder(e : {list: List, reminder: Reminder}) : void {
-        console.log("update reminder");
+        this.service.updateReminder(e.list.id, e.reminder).subscribe();
     }
 
     deleteReminder(e: {list: List, reminder: Reminder}) : void {
         let i : number = e.list.reminders.indexOf(e.reminder);
         e.list.reminders.splice(i, 1);
-
-        /*
-        outer:
-        for(var i = 0; i < this.board.lists.length; i++){
-            for(var j = 0; j < this.board.lists[i].reminders.length; j++){
-                if(this.board.lists[i].reminders[j] == reminder){
-                    this.board.lists[i].reminders.splice(j, 1);
-                    break outer;
+        if(this.isFilterList) {
+            outer:
+            for(let i = 0; i < this.board.lists.length; i++){
+                for(let j = 0; j < this.board.lists[i].reminders.length; j++){
+                    if(this.board.lists[i].reminders[j] == e.reminder){
+                        this.board.lists[i].reminders.splice(j, 1);
+                        break outer;
+                    }
                 }
             }
         }
-        */
+
+        this.service.deleteReminder(e.list.id, e.reminder.id).subscribe();
     }
 
     updateFilterLists() : void{
