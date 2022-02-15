@@ -76,3 +76,5 @@ Thumbs.db
 *.http
 
 *.db
+
+service/data/reminder-app.db
