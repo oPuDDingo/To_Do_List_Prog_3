@@ -11,7 +11,7 @@ export class ReminderComponent implements OnInit, AfterViewInit {
   @Input()
   reminder : Reminder;
   date : string;
-
+  deleteTimer: number = -1;
 
   @Output()
   updateEvent: EventEmitter<Reminder> = new EventEmitter<Reminder>();
@@ -63,7 +63,24 @@ export class ReminderComponent implements OnInit, AfterViewInit {
   }
 
   triggerDelete(){
-    this.deleteEvent.emit(this.reminder);
+    if(this.deleteTimer === -1){
+      this.deleteTimer = 3;
+      let interval = setInterval(()=>{
+        if(this.deleteTimer === 1){
+          clearInterval(interval);
+          this.deleteEvent.emit(this.reminder);
+        }
+        else if(this.deleteTimer === -1){
+          clearInterval(interval);
+        }
+        else {
+          this.deleteTimer--;
+        }
+      }, 1000);
+    }
+    else {
+      this.deleteTimer = -1;
+    }
   }
 
 

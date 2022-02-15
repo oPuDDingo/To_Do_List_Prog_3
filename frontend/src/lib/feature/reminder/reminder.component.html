@@ -20,7 +20,8 @@
     </button>
 
     <button class="reminder-button delete" (click)="triggerDelete()">
-        <img src="/assets/pics/check.png"/>
+        <img *ngIf="deleteTimer === -1" src="/assets/pics/check.png"/>
+        <div *ngIf="deleteTimer != -1" class="timer"> {{deleteTimer}} </div>
     </button>
 
 </div>
