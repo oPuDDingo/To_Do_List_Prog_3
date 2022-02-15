@@ -14,14 +14,7 @@
         </div>
 
         <div class="list-container">
-            <div class="list-element" *ngFor="let list of board.lists; let i = index">
-                <div class="list-card" (click)="onListCardClicked(list)">
-                    <input id="{{'title-input'+i}}" type="text" maxlength="18" (blur)="focusOutTitleInput(i)" [focusMe]="true" [(ngModel)]="list.title"/>
-                    <button (click)="onEditClicked(i, $event)"><img src="/assets/edit.png"/></button>
-                </div>
-                <counter class="counter" [count]="list.reminders.length"></counter>
-                <button class="delete-button" (click)="onDeleteClicked(list)"> <img src="/assets/trash.png"/></button>
-            </div>
+            <list-element *ngFor="let list of board.lists" [list]="list" (clickEvent)="selectList(list)" (deleteEvent)="deleteList(list)"></list-element>
             <add-button (clickEvent)="onPlusClicked()"></add-button>
         </div>
     </div>

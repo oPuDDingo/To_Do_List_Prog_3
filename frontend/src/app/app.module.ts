@@ -11,11 +11,12 @@ import {FocusDirective} from "../lib/util/autofocus.directive";
 import {HttpClientModule} from "@angular/common/http";
 import { AddButtonComponent } from '../lib/ui/add-button/add-button.component';
 import { CounterComponent } from '../lib/ui/counter/counter.component';
+import { ListElementComponent } from '../lib/feature/list-element/list-element.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, BoardComponent, ListComponent, ReminderComponent, ToolbarComponent, FocusDirective, AddButtonComponent, CounterComponent],
+  declarations: [AppComponent, BoardComponent, ListComponent, ReminderComponent, ToolbarComponent, FocusDirective, AddButtonComponent, CounterComponent, ListElementComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

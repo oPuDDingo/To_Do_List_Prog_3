@@ -25,7 +25,7 @@ export class ReminderComponent implements OnInit, AfterViewInit {
   flagIBtn : ElementRef;
 
   @ViewChild('date')
-  inputeDate : ElementRef;
+  inputDate : ElementRef;
 
   constructor() { }
 

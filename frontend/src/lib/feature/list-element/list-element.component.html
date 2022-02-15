@@ -1,0 +1,8 @@
+<div class="list-element">
+    <div class="list-card" (click)="onListCardClicked()">
+        <input #title type="text" maxlength="18" (blur)="focusOut()" [focusMe]="true" [(ngModel)]="list.title"/>
+        <button (click)="onEditClicked($event)"><img src="/assets/edit.png"/></button>
+    </div>
+    <counter class="counter" [count]="list.reminders.length"></counter>
+    <button class="delete-button" (click)="onDeleteClicked()"><img src="/assets/trash.png"/></button>
+</div>

@@ -44,24 +44,6 @@ export class BoardComponent implements OnInit {
     //     };
     // }
 
-    onListCardClicked(list: List){
-        this.isFilterList = false;
-        this.currentList = list;
-    }
-
-    onEditClicked(i: number, e: Event) {
-        this.focusTitleInput(i)
-        e.stopPropagation()
-    }
-
-    focusTitleInput(i: number) : void {
-        document.getElementById("title-input" + i).removeAttribute("readonly");
-        document.getElementById("title-input" + i).focus();
-    }
-
-    focusOutTitleInput(i : number) {
-        document.getElementById("title-input"+i).setAttribute("readonly", "readonly");
-    }
 
     onPlusClicked() {
         let createdList : List = {title:"", reminders: []};
@@ -71,7 +53,12 @@ export class BoardComponent implements OnInit {
         });
     }
 
-    onDeleteClicked(list: List){
+    selectList(list: List) {
+        this.isFilterList = false;
+        this.currentList = list;
+    }
+
+    deleteList(list: List){
         let i: number = this.board.lists.indexOf(list);
         this.board.lists.splice(i, 1);
         if(this.currentList === list){
