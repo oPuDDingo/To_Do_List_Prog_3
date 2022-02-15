@@ -103,22 +103,22 @@ string JsonParser::convertToApiString(std::vector<Reminder> &reminders) {
 }
 
 std::optional<List> JsonParser::convertListToModel(int listId, std::string &request) {
-    std::optional<List> resultColumn;
+    std::optional<List> resultList;
     Document document;
     document.Parse(request.c_str());
 
     if (isValidList(document)) {
         std::string title = document["title"].GetString();
-        resultColumn = List(listId, title);
+        resultList = List(listId, title);
     }
-    return resultColumn;
+    return resultList;
 }
 
 std::optional<Reminder> JsonParser::convertReminderToModel(int reminderId, std::string &request) {
     std::optional<Reminder> resultReminder;
     Document document;
     document.Parse(request.c_str());
-    cout << request << " " << to_string(isValidReminder(document));
+
     if (isValidReminder(document)) {
         std::string title = document["title"].GetString();
         std::string date = document["date"].GetString();
