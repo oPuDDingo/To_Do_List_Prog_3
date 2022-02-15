@@ -1,26 +1,19 @@
 <div id="board" *ngIf="board">
     <div class="overview">
         <div class="filter-container">
-            <div class="filter-button"
-                 (click)="selectToday()">
+            <filter-button
+                (click)="selectToday()"
+                [icon]="'assets/pics/today.png'"
+                [text]="'Today'"
+                [count]="today.reminders.length">
+            </filter-button>
 
-                <img src="/assets/pics/today.png"/>
-                <div class="filter-text">Today</div>
-
-                <counter class="counter"
-                         [count]="today.reminders.length">
-                </counter>
-            </div>
-            <div class="filter-button"
-                 (click)="selectFlagged()">
-
-                <img src="/assets/pics/mark.png"/>
-                <div class="filter-text">Flagged</div>
-
-                <counter class="counter"
-                         [count]="flagged.reminders.length">
-                </counter>
-            </div>
+            <filter-button
+                (click)="selectFlagged()"
+                [icon]="'assets/pics/mark.png'"
+                [text]="'Flagged'"
+                [count]="flagged.reminders.length">
+            </filter-button>
         </div>
 
         <div class="list-container">
