@@ -50,8 +50,8 @@ export class BoardComponent implements OnInit {
     }
 
     deleteList(list: List) : void{
-        let i: number = this.board.lists.indexOf(list);
-        this.board.lists.splice(i, 1);
+        this.cutElement(this.board.lists, list);
+
         if(this.currentList === list){
             this.currentList = undefined;
         }
@@ -69,25 +69,34 @@ export class BoardComponent implements OnInit {
     }
 
     updateReminder(e : {list: List, reminder: Reminder}) : void {
-        this.service.updateReminder(e.list.id, e.reminder).subscribe();
+        this.updateFilterLists();
+
+        let listId : number = e.list.id;
+        if(this.isFilterList) {
+            listId = this.searchCorrectList(e.reminder).id;
+        }
+
+        this.service.updateReminder(listId, e.reminder).subscribe();
     }
 
     deleteReminder(e: {list: List, reminder: Reminder}) : void {
-        let i : number = e.list.reminders.indexOf(e.reminder);
-        e.list.reminders.splice(i, 1);
+        this.cutElement(e.list.reminders, e.reminder);
+
+        let listId : number = e.list.id;
         if(this.isFilterList) {
-            outer:
-            for(let i = 0; i < this.board.lists.length; i++){
-                for(let j = 0; j < this.board.lists[i].reminders.length; j++){
-                    if(this.board.lists[i].reminders[j] == e.reminder){
-                        this.board.lists[i].reminders.splice(j, 1);
-                        break outer;
-                    }
-                }
-            }
+            let realList : List = this.searchCorrectList(e.reminder);
+            this.cutElement(realList.reminders, e.reminder);
+            listId = realList.id;
         }
 
-        this.service.deleteReminder(e.list.id, e.reminder.id).subscribe();
+        this.service.deleteReminder(listId, e.reminder.id).subscribe();
+    }
+
+    cutElement(array: any[], element: any) : void {
+        let i = array.indexOf(element);
+        if(i != -1) {
+            array.splice(i, 1);
+        }
     }
 
     updateFilterLists() : void{
@@ -100,6 +109,16 @@ export class BoardComponent implements OnInit {
                 }
                 if(this.board.lists[i].reminders[j].date === new Date().toISOString().split('T')[0]){
                     this.today.reminders.push(this.board.lists[i].reminders[j]);
+                }
+            }
+        }
+    }
+
+    searchCorrectList(reminder: Reminder) : List {
+        for(let i = 0; i < this.board.lists.length; i++){
+            for(let j = 0; j < this.board.lists[i].reminders.length; j++){
+                if(this.board.lists[i].reminders[j] == reminder){
+                    return this.board.lists[i];
                 }
             }
         }
