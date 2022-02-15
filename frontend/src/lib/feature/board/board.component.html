@@ -4,12 +4,12 @@
             <div class="filter-button" (click)="onTodayClicked()">
                 <img src="/assets/today.png"/>
                 <div class="filter-text">Today</div>
-                <div class="rounded">{{today.reminders.length}}</div>
+                <counter class="counter" [count]="today.reminders.length"></counter>
             </div>
             <div class="filter-button" (click)="onFlaggedClicked()">
                 <img src="/assets/mark.png"/>
                 <div class="filter-text">Flagged</div>
-                <div class="rounded">{{flagged.reminders.length}}</div>
+                <counter class="counter" [count]="flagged.reminders.length"></counter>
             </div>
         </div>
 
@@ -19,10 +19,10 @@
                     <input id="{{'title-input'+i}}" type="text" maxlength="18" (blur)="focusOutTitleInput(i)" [focusMe]="true" [(ngModel)]="list.title"/>
                     <button (click)="onEditClicked(i, $event)"><img src="/assets/edit.png"/></button>
                 </div>
-                <div class="rounded"> {{list.reminders.length}}</div>
+                <counter class="counter" [count]="list.reminders.length"></counter>
                 <button class="delete-button" (click)="onDeleteClicked(list)"> <img src="/assets/trash.png"/></button>
             </div>
-            <button class="plus-btn" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
+            <add-button (clickEvent)="onPlusClicked()"></add-button>
         </div>
     </div>
 

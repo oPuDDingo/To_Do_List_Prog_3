@@ -1,0 +1,17 @@
+.plus-btn {
+  color: black;
+  background-color: transparent;
+  border: none;
+  transition: 0.1s;
+  transition-timing-function: ease-in-out;
+  width: 30px;
+  height: 30px;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.plus-btn:hover {
+  transform: translateY(-4px);
+}

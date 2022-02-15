@@ -1,11 +1,11 @@
 <div class="list">
     <div class="list-header">
         <div class="title-text">{{list.title}}</div>
-        <div class="rounded">{{list.reminders.length}}</div>
+        <counter class="counter" [count]="list.reminders.length"></counter>
     </div>
     <div class="reminder-container">
         <reminder *ngFor="let reminder of list.reminders" [reminder]="reminder" (deleteClicked)="onDeleteClicked($event)">
         </reminder>
-        <button class="plus-btn" *ngIf="!isFilterList" (click)="onPlusClicked()"><img src="/assets/plus.png"/></button>
+        <add-button *ngIf="!isFilterList" (clickEvent)="onPlusClicked()"></add-button>
     </div>
 </div>
