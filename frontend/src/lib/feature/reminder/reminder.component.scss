@@ -84,6 +84,7 @@
 
 .flag:hover {
   border: 3px solid red;
+  box-shadow: 0 12px 16px 0 rgba(255, 0, 0, 0.53);
   padding: -2px;
 }
 
@@ -107,6 +108,7 @@
 
 .delete:hover {
   border: 3px solid lawngreen;
+  box-shadow: 0 12px 16px 0 rgba(123, 255, 0, 0.53);
 }
 
 .timer {
