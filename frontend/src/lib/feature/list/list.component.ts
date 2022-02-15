@@ -40,6 +40,4 @@ export class ListComponent implements OnInit {
   triggerDelete(reminder: Reminder) {
     this.deleteEvent.emit({list: this.list, reminder: reminder});
   }
-
-
 }

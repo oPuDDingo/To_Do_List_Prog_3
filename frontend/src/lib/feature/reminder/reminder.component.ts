@@ -49,11 +49,11 @@ export class ReminderComponent implements OnInit, AfterViewInit {
 
   setFlagIcon(){
     if(this.reminder.flagged) {
-      this.flagImg.nativeElement.setAttribute("src", "/assets/markTrue.png");
+      this.flagImg.nativeElement.setAttribute("src", "/assets/pics/markTrue.png");
       this.flagIBtn.nativeElement.setAttribute("class", "reminder-button flag true");
     }
     else {
-      this.flagImg.nativeElement.setAttribute("src", "/assets/markFalse.png");
+      this.flagImg.nativeElement.setAttribute("src", "/assets/pics/markFalse.png");
       this.flagIBtn.nativeElement.setAttribute("class", "reminder-button flag false");
     }
   }
