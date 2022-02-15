@@ -34,7 +34,7 @@ export class BackendService {
         let listPayload = {
             ...list,
         };
-        return this.client.post<List>(this.url + "/api/board/lists/" + list.id, listPayload);
+        return this.client.put<List>(this.url + "/api/board/lists/" + list.id, listPayload);
     }
 
     createReminder(listId : number, reminder: Partial<Reminder>) : Observable<Reminder> {
