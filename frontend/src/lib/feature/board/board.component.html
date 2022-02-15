@@ -1,26 +1,47 @@
 <div id="board" *ngIf="board">
     <div class="overview">
         <div class="filter-container">
-            <div class="filter-button" (click)="onTodayClicked()">
+            <div class="filter-button"
+                 (click)="selectToday()">
+
                 <img src="/assets/today.png"/>
                 <div class="filter-text">Today</div>
-                <counter class="counter" [count]="today.reminders.length"></counter>
+
+                <counter class="counter"
+                         [count]="today.reminders.length">
+                </counter>
             </div>
-            <div class="filter-button" (click)="onFlaggedClicked()">
+            <div class="filter-button"
+                 (click)="selectFlagged()">
+
                 <img src="/assets/mark.png"/>
                 <div class="filter-text">Flagged</div>
-                <counter class="counter" [count]="flagged.reminders.length"></counter>
+
+                <counter class="counter"
+                         [count]="flagged.reminders.length">
+                </counter>
             </div>
         </div>
 
         <div class="list-container">
-            <list-element *ngFor="let list of board.lists" [list]="list" (clickEvent)="selectList(list)" (deleteEvent)="deleteList(list)"></list-element>
-            <add-button (clickEvent)="onPlusClicked()"></add-button>
+            <list-element
+                    *ngFor="let list of board.lists"
+                    [list]="list"
+                    (clickEvent)="selectList(list)"
+                    (updateEvent)="updateList(list)"
+                    (deleteEvent)="deleteList(list)">
+            </list-element>
+            <add-button (clickEvent)="createList()">
+            </add-button>
         </div>
     </div>
 
-    <div *ngIf="currentList">
-        <list [list]="this.currentList" [isFilterList]="isFilterList" (reminderDeleted)="deleteReminder($event)"></list>
-    </div>
+    <list *ngIf="currentList"
+          [list]="currentList"
+          [isFilterList]="isFilterList"
+          (createEvent)="createReminder($event)"
+          (updateEvent)="updateReminder($event)"
+          (deleteEvent)="deleteReminder($event)">
+    </list>
 
 </div>

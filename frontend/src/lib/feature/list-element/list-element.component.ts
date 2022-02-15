@@ -15,6 +15,9 @@ export class ListElementComponent implements OnInit {
   clickEvent: EventEmitter<List> = new EventEmitter<List>();
 
   @Output()
+  updateEvent: EventEmitter<List> = new EventEmitter<List>();
+
+  @Output()
   deleteEvent: EventEmitter<List> = new EventEmitter<List>();
 
   @ViewChild("title")
@@ -26,11 +29,7 @@ export class ListElementComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onListCardClicked(){
-    this.clickEvent.emit(this.list);
-  }
-
-  onEditClicked(e: Event) {
+  editTitle(e: Event) {
     this.focusIn();
     e.stopPropagation()
   }
@@ -44,7 +43,15 @@ export class ListElementComponent implements OnInit {
     this.inputField.nativeElement.setAttribute("readonly", "readonly");
   }
 
-  onDeleteClicked(){
+  triggerClick(){
+    this.clickEvent.emit(this.list);
+  }
+
+  triggerUpdate() {
+    this.updateEvent.emit(this.list);
+  }
+
+  triggerDelete(){
     this.deleteEvent.emit(this.list);
   }
 

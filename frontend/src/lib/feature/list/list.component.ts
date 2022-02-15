@@ -16,25 +16,30 @@ export class ListComponent implements OnInit {
   isFilterList: boolean;
 
   @Output()
-  reminderDeleted: EventEmitter<Reminder> = new EventEmitter<Reminder>();
+  createEvent: EventEmitter<List> = new EventEmitter<List>();
+
+  @Output()
+  updateEvent: EventEmitter<{list: List, reminder: Reminder }> = new EventEmitter<{list: List, reminder: Reminder }>();
+
+  @Output()
+  deleteEvent: EventEmitter<{list: List, reminder: Reminder }> = new EventEmitter<{list: List, reminder: Reminder }>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onPlusClicked() {
-    this.list.reminders.push({id: 1, title: "", date: "", flagged: false});
+  triggerCreate() {
+    this.createEvent.emit(this.list);
   }
 
-  onDeleteClicked(reminder: Reminder) {
-    let i: number = this.list.reminders.indexOf(reminder);
-    this.list.reminders.splice(i, 1);
-    if(this.isFilterList){
-      this.reminderDeleted.emit(reminder);
-    }
+  triggerUpdate(reminder: Reminder) {
+    this.updateEvent.emit({list: this.list, reminder: reminder});
   }
 
+  triggerDelete(reminder: Reminder) {
+    this.deleteEvent.emit({list: this.list, reminder: reminder});
+  }
 
 
 }

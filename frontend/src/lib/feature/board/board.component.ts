@@ -29,36 +29,26 @@ export class BoardComponent implements OnInit {
             this.board = board;
             this.updateFilterLists();
         })
-        // this.dummyData();
-        // this.currentList = this.board.lists[0];
     }
 
-    // dummyData(): void {
-    //     this.board = {"", [{1, "stuff", []}, {2, "stuff2", []}]};
-    //     this.board = {title: "test",
-    //         lists: [{id: 1, title: "stuff", reminders: [{id: 1, title: "r1", date: "31-12-2001"}, {id: 2, title: "r2", date: "31-12-2005"}]}, {
-    //             id: 2,
-    //             title: "stuff2",
-    //             reminders: [{id: 1, title: "r1", date: "31-12-2002"}, {id: 2, title: "r2", date: "31-12-2003"}]
-    //         }]
-    //     };
-    // }
-
-
-    onPlusClicked() {
-        let createdList : List = {title:"", reminders: []};
-        this.board.lists.push(createdList);
-        this.service.createList(createdList).subscribe((list) => {
-           createdList.id = list.id;
-        });
-    }
-
-    selectList(list: List) {
+    selectList(list: List) : void {
         this.isFilterList = false;
         this.currentList = list;
     }
 
-    deleteList(list: List){
+    createList() : void {
+        let createdList : List = {title:"", reminders: []};
+        this.board.lists.push(createdList);
+        this.service.createList(createdList).subscribe((list) => {
+            createdList.id = list.id;
+        });
+    }
+
+    updateList(list: List) : void {
+        console.log("update list");
+    }
+
+    deleteList(list: List) : void{
         let i: number = this.board.lists.indexOf(list);
         this.board.lists.splice(i, 1);
         if(this.currentList === list){
@@ -67,21 +57,35 @@ export class BoardComponent implements OnInit {
         this.service.deleteList(list.id).subscribe();
     }
 
-    onTodayClicked(){
-        this.isFilterList = true;
-        this.updateFilterLists();
-        this.currentList = this.today;
+    createReminder(list: List) {
+        let createdReminder : Reminder = {title: "", date:"", flagged: false};
+        list.reminders.push(createdReminder);
     }
 
-    onFlaggedClicked(){
-        this.isFilterList = true;
-        this.updateFilterLists();
-        this.currentList = this.flagged;
+    updateReminder(e : {list: List, reminder: Reminder}) : void {
+        console.log("update reminder");
     }
 
-    updateFilterLists(){
-        this.flagged.reminders.splice(0, this.flagged.reminders.length);
-        this.today.reminders.splice(0, this.today.reminders.length);
+    deleteReminder(e: {list: List, reminder: Reminder}) : void {
+        let i : number = e.list.reminders.indexOf(e.reminder);
+        e.list.reminders.splice(i, 1);
+
+        /*
+        outer:
+        for(var i = 0; i < this.board.lists.length; i++){
+            for(var j = 0; j < this.board.lists[i].reminders.length; j++){
+                if(this.board.lists[i].reminders[j] == reminder){
+                    this.board.lists[i].reminders.splice(j, 1);
+                    break outer;
+                }
+            }
+        }
+        */
+    }
+
+    updateFilterLists() : void{
+        this.flagged.reminders = [];
+        this.today.reminders = [];
         for(var i = 0; i < this.board.lists.length; i++) {
             for(var j = 0; j < this.board.lists[i].reminders.length; j++){
                 if(this.board.lists[i].reminders[j].flagged){
@@ -94,16 +98,17 @@ export class BoardComponent implements OnInit {
         }
     }
 
-    deleteReminder(reminder: Reminder){
-        outer:
-        for(var i = 0; i < this.board.lists.length; i++){
-            for(var j = 0; j < this.board.lists[i].reminders.length; j++){
-                if(this.board.lists[i].reminders[j] == reminder){
-                    this.board.lists[i].reminders.splice(j, 1);
-                    break outer;
-                }
-            }
-        }
+    selectToday(){
+        this.isFilterList = true;
+        this.updateFilterLists();
+        this.currentList = this.today;
     }
+
+    selectFlagged(){
+        this.isFilterList = true;
+        this.updateFilterLists();
+        this.currentList = this.flagged;
+    }
+
 
 }

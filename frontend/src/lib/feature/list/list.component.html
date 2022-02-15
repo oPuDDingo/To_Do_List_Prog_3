@@ -1,11 +1,21 @@
 <div class="list">
     <div class="list-header">
         <div class="title-text">{{list.title}}</div>
-        <counter class="counter" [count]="list.reminders.length"></counter>
+        <counter class="counter"
+                 [count]="list.reminders.length">
+        </counter>
     </div>
+
     <div class="reminder-container">
-        <reminder *ngFor="let reminder of list.reminders" [reminder]="reminder" (deleteClicked)="onDeleteClicked($event)">
+        <reminder *ngFor="let reminder of list.reminders"
+                  [reminder]="reminder"
+                  (updateEvent)="triggerUpdate($event)"
+                  (deleteEvent)="triggerDelete($event)">
         </reminder>
-        <add-button *ngIf="!isFilterList" (clickEvent)="onPlusClicked()"></add-button>
+
+        <add-button *ngIf="!isFilterList"
+                    (clickEvent)="triggerCreate()">
+        </add-button>
     </div>
+
 </div>
