@@ -3,6 +3,7 @@ import {Board} from "../../data-access/models/board";
 import {List} from "../../data-access/models/list";
 import {Reminder} from "../../data-access/models/reminder";
 import {BackendService} from "../../data-access/services/backend.service";
+import {ArrayUtil} from "../../util/ArrayUtil";
 
 
 @Component({
@@ -50,7 +51,7 @@ export class BoardComponent implements OnInit {
     }
 
     deleteList(list: List) : void{
-        this.cutElement(this.board.lists, list);
+        ArrayUtil.cutElement(this.board.lists, list);
 
         if(this.currentList === list){
             this.currentList = undefined;
@@ -80,23 +81,16 @@ export class BoardComponent implements OnInit {
     }
 
     deleteReminder(e: {list: List, reminder: Reminder}) : void {
-        this.cutElement(e.list.reminders, e.reminder);
+        ArrayUtil.cutElement(e.list.reminders, e.reminder);
 
         let listId : number = e.list.id;
         if(this.isFilterList) {
             let realList : List = this.searchCorrectList(e.reminder);
-            this.cutElement(realList.reminders, e.reminder);
+            ArrayUtil.cutElement(realList.reminders, e.reminder);
             listId = realList.id;
         }
 
         this.service.deleteReminder(listId, e.reminder.id).subscribe();
-    }
-
-    cutElement(array: any[], element: any) : void {
-        let i = array.indexOf(element);
-        if(i != -1) {
-            array.splice(i, 1);
-        }
     }
 
     updateFilterLists() : void{
