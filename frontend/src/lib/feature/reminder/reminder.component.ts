@@ -17,7 +17,7 @@ export class ReminderComponent implements OnInit, AfterViewInit {
   updateEvent: EventEmitter<Reminder> = new EventEmitter<Reminder>();
 
   @Output()
-  deleteEvent: EventEmitter<Reminder> = new EventEmitter<Reminder>();
+  deleteEvent: EventEmitter<{reminder: Reminder, type: string}> = new EventEmitter<{reminder: Reminder, type: string}>();
 
   @ViewChild('title')
   inputField : ElementRef;
@@ -64,14 +64,16 @@ export class ReminderComponent implements OnInit, AfterViewInit {
 
   triggerDelete(){
     if(this.deleteTimer === -1){
+      this.deleteEvent.emit({reminder: this.reminder, type: "countdown"});
       this.deleteTimer = 3;
       let interval = setInterval(()=>{
         if(this.deleteTimer === 1){
           clearInterval(interval);
-          this.deleteEvent.emit(this.reminder);
+          this.deleteEvent.emit({reminder: this.reminder, type: "delete"});
         }
         else if(this.deleteTimer === -1){
           clearInterval(interval);
+          this.deleteEvent.emit({reminder: this.reminder, type: "cancel"});
         }
         else {
           this.deleteTimer--;
