@@ -18,17 +18,7 @@
   width: 50px;
 }
 
-//.title {
-//  font-family: Dubiel;
-//  font-size: 60px;
-//  margin: auto;
-//  float: right;
-//  border-bottom: double;
-//  letter-spacing: 10px;
-//  font-weight: 700;
-//}
-
-.glitch {
+.title {
   font: {
     size: 60px;
     family: Dubiel;
@@ -40,9 +30,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin: 0;
+  margin: auto;
   color: #ffffff;
-  letter-spacing: 5px;
+  border-bottom: double;
+  border-color: black;
+  letter-spacing: 10px;
 
   &:before, &:after {
     display: block;
