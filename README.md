@@ -17,4 +17,5 @@ You need a delightful IDE like CLion (or what do u think is a attractive IDE?) a
 
 ## Design Questions - let's go, we can explaine everything!
 
-Our website should be modern, but also special like us. 
+Our website should be modern, but also special like us. We followed the specifications and implemented them as we had imagined. 
+The main feature should be the background with all its beautiful colors. The rest of the design is based on this.
