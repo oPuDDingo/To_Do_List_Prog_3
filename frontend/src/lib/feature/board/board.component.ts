@@ -84,7 +84,7 @@ export class BoardComponent implements OnInit {
         ArrayUtil.cutElement(e.list.reminders, e.reminder);
 
         let listId : number = e.list.id;
-        if(this.isFilterList) {
+        if(e.list == this.today || e.list == this.flagged) {
             let realList : List = this.searchCorrectList(e.reminder);
             ArrayUtil.cutElement(realList.reminders, e.reminder);
             listId = realList.id;
