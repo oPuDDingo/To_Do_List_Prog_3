@@ -29,7 +29,7 @@ export class BoardComponent implements OnInit {
         this.service.loadBoard().subscribe((board) => {
             this.board = board;
             this.updateFilterLists();
-        })
+        });
     }
 
     selectList(list: List) : void {
@@ -57,6 +57,7 @@ export class BoardComponent implements OnInit {
             this.currentList = undefined;
         }
 
+        this.updateFilterLists();
         this.service.deleteList(list.id).subscribe();
     }
 
@@ -70,13 +71,13 @@ export class BoardComponent implements OnInit {
     }
 
     updateReminder(e : {list: List, reminder: Reminder}) : void {
-        this.updateFilterLists();
 
         let listId : number = e.list.id;
         if(this.isFilterList) {
             listId = this.searchCorrectList(e.reminder).id;
         }
 
+        this.updateFilterLists();
         this.service.updateReminder(listId, e.reminder).subscribe();
     }
 
@@ -90,6 +91,7 @@ export class BoardComponent implements OnInit {
             listId = realList.id;
         }
 
+        this.updateFilterLists();
         this.service.deleteReminder(listId, e.reminder.id).subscribe();
     }
 
