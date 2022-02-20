@@ -28,6 +28,6 @@ class Reminder {
     void setFlagged(bool flagged);
 };
 
-} // namespace Model
-} // namespace Core
-} // namespace ReminderApp
+}
+}
+}

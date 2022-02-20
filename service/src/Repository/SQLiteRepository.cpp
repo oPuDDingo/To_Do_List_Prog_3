@@ -47,7 +47,6 @@ void SQLiteRepository::initialize() {
         "id integer not null primary key autoincrement,"
         "title text not null,"
         "date text not null,"
-        "done bit,"
         "flagged bit,"
         "list_id integer not null,"
         "foreign key (list_id) references list (id))";
@@ -193,10 +192,9 @@ std::vector<Reminder> SQLiteRepository::getReminders(int listId) {
             std::to_string(listId) +
             " order by reminder.id";
 
-    int result = 0;
     char *errorMessage = nullptr;
 
-    result = sqlite3_exec(database, sqlQueryReminders.c_str(), queryRemindersCallback, &reminders, &errorMessage);
+    int result = sqlite3_exec(database, sqlQueryReminders.c_str(), queryRemindersCallback, &reminders, &errorMessage);
     handleSQLError(result, errorMessage);
 
     return reminders;
@@ -212,10 +210,9 @@ std::optional<Reminder> SQLiteRepository::getReminder(int listId, int reminderId
             std::to_string(listId) + " and reminder.id = " + std::to_string(reminderId) +
             " order by reminder.id";
 
-    int result = 0;
     char *errorMessage = nullptr;
 
-    result = sqlite3_exec(database, sqlQueryReminders.c_str(), queryRemindersCallback, &reminders, &errorMessage);
+    int result = sqlite3_exec(database, sqlQueryReminders.c_str(), queryRemindersCallback, &reminders, &errorMessage);
     handleSQLError(result, errorMessage);
 
     if (reminders.size() == 1) {
@@ -232,10 +229,9 @@ std::optional<Reminder> SQLiteRepository::postReminder(int listId, std::string t
             "VALUES ('" +
             title + "','" + date + "'," + to_string(listId) + "," + std::to_string(flagged ? 1 : 0) + ");";
 
-    int result = 0;
     char *errorMessage = nullptr;
 
-    result = sqlite3_exec(database, sqlPostReminder.c_str(), NULL, 0, &errorMessage);
+    int result = sqlite3_exec(database, sqlPostReminder.c_str(), NULL, 0, &errorMessage);
     handleSQLError(result, errorMessage);
 
     int reminderId = INVALID_ID;
@@ -252,10 +248,9 @@ std::optional<ReminderApp::Core::Model::Reminder> SQLiteRepository::putReminder(
             "UPDATE reminder SET title = '" + title + "', date = '" + date + "', flagged = " + to_string(flagged) +
             " WHERE reminder.list_id = " + to_string(listId) + " AND reminder.id = " + to_string(reminderId);
 
-    int result = 0;
     char *errorMessage = nullptr;
 
-    result = sqlite3_exec(database, sqlUpdateReminder.c_str(), NULL, 0, &errorMessage);
+    int result = sqlite3_exec(database, sqlUpdateReminder.c_str(), NULL, 0, &errorMessage);
     handleSQLError(result, errorMessage);
 
     return getReminder(listId, reminderId);
@@ -268,15 +263,13 @@ void SQLiteRepository::deleteReminder(int listId, int reminderId) {
             to_string(listId) +
             " AND reminder.id = " + to_string(reminderId);
 
-    int result = 0;
     char *errorMessage = nullptr;
 
-    result = sqlite3_exec(database, sqlQueryReminder.c_str(), NULL, 0, &errorMessage);
+    int result = sqlite3_exec(database, sqlQueryReminder.c_str(), NULL, 0, &errorMessage);
     handleSQLError(result, errorMessage);
 }
 
-Reminder SQLiteRepository::getReminderFromCallback(char **fieldValues, int startIndex) {
-    int index = startIndex;
+Reminder SQLiteRepository::getReminderFromCallback(char **fieldValues, int index) {
 
     int reminderId = fieldValues[index] ? atoi(fieldValues[index]) : INVALID_ID;
     index++;
@@ -293,8 +286,7 @@ Reminder SQLiteRepository::getReminderFromCallback(char **fieldValues, int start
     return reminder;
 }
 
-List SQLiteRepository::getListFromCallback(char **fieldValues, int startIndex) {
-    int index = startIndex;
+List SQLiteRepository::getListFromCallback(char **fieldValues, int index) {
 
     int listId = fieldValues[index] ? atoi(fieldValues[index]) : INVALID_ID;
     index++;

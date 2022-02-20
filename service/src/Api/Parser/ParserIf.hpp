@@ -24,4 +24,4 @@ class ParserIf {
     virtual std::optional<ReminderApp::Core::Model::Reminder> convertReminderToModel(int reminderId, std::string &request) = 0;
 };
 
-} // namespace Reminder
+}

@@ -52,4 +52,4 @@ class SQLiteRepository : public RepositoryIf {
     static std::string const databaseFile;
 };
 
-} // namespace ReminderApp
+}

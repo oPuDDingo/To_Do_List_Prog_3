@@ -79,17 +79,14 @@ string JsonParser::convertToApiString(std::vector<List> &lists) {
 
 string JsonParser::convertToApiString(Reminder &reminder) {
 
-    string result = EMPTY_JSON;
     Document document(kObjectType);
 
     Value jsonReminder = getJsonValueFromModel(reminder, document.GetAllocator());
-    result = jsonValueToString(jsonReminder);
-    return result;
+
+    return jsonValueToString(jsonReminder);
 }
 
 string JsonParser::convertToApiString(std::vector<Reminder> &reminders) {
-
-    string result = EMPTY_JSON;
 
     Document document(rapidjson::kArrayType);
     Document::AllocatorType &allocator = document.GetAllocator();
@@ -111,6 +108,7 @@ std::optional<List> JsonParser::convertListToModel(int listId, std::string &requ
         std::string title = document["title"].GetString();
         resultList = List(listId, title);
     }
+
     return resultList;
 }
 
@@ -125,6 +123,7 @@ std::optional<Reminder> JsonParser::convertReminderToModel(int reminderId, std::
         bool flagged = document["flagged"].GetBool();
         resultReminder = Reminder(reminderId, title, date, flagged);
     }
+
     return resultReminder;
 }
 

@@ -21,4 +21,4 @@ class Board {
     void setLists(std::vector<List> const &lists);
 };
 
-} // namespace ReminderApp
+}

@@ -26,7 +26,7 @@ void Endpoint::registerRoutes() {
 
     CROW_ROUTE(app, "/api/board/lists")
         .methods(HTTPMethod::Get, HTTPMethod::Post)([this](const request &req, response &res) {
-            std::string jsonLists;
+            std::string jsonLists = "{}";
             switch (req.method) {
             case HTTPMethod::Get:
                 jsonLists = manager.getLists();
@@ -60,7 +60,7 @@ void Endpoint::registerRoutes() {
 
     CROW_ROUTE(app, "/api/board/lists/<int>/reminders")
         .methods(HTTPMethod::Get, HTTPMethod::Post)([this](const request &req, response &res, int listId) {
-            std::string jsonReminders;
+            std::string jsonReminders = "{}";
             switch (req.method) {
             case HTTPMethod::Get:
                 jsonReminders = manager.getReminders(listId);

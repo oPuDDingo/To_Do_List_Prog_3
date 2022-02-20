@@ -27,4 +27,4 @@ class List {
     void addReminder(Reminder &reminder);
 };
 
-} // namespace ReminderApp
+}

@@ -29,4 +29,4 @@ class Manager {
     void deleteReminder(int listId, int reminderId);
 };
 
-} // namespace ReminderApp
+}

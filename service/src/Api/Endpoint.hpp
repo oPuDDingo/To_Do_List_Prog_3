@@ -17,4 +17,4 @@ class Endpoint {
     ReminderApp::Core::Manager &manager;
 };
 
-} // namespace ReminderApp
+}
