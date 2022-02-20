@@ -8,7 +8,7 @@ import {ArrayUtil} from "../../util/ArrayUtil";
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnChanges {
+export class ListComponent implements OnChanges {
 
   @Input()
   list : List;
@@ -29,8 +29,6 @@ export class ListComponent implements OnInit, OnChanges {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     while (this.toDelete.length > 0) {

@@ -1,11 +1,18 @@
-import { Component, Input } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
 
 @Component({
     selector: 'toolbar',
     templateUrl: './toolbar.component.html',
     styleUrls: ['./toolbar.component.scss'],
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements AfterViewInit {
     @Input()
-    title = 'My Board is the Lord';
+    title: String;
+
+    @ViewChild("titleElement")
+    titleElement: ElementRef;
+
+    ngAfterViewInit(): void {
+        this.titleElement.nativeElement.setAttribute("data-glitch", this.title);
+    }
 }

@@ -6,7 +6,7 @@ import {Reminder} from "../../data-access/models/reminder";
   templateUrl: './reminder.component.html',
   styleUrls: ['./reminder.component.scss']
 })
-export class ReminderComponent implements OnInit, AfterViewInit {
+export class ReminderComponent implements AfterViewInit {
 
   @Input()
   reminder : Reminder;
@@ -32,9 +32,6 @@ export class ReminderComponent implements OnInit, AfterViewInit {
   inputDate : ElementRef;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit() {
     this.inputField.nativeElement.focus();

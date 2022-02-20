@@ -5,7 +5,7 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './filter-button.component.html',
   styleUrls: ['./filter-button.component.scss']
 })
-export class FilterButtonComponent implements OnInit {
+export class FilterButtonComponent {
 
   @Input()
   text: string;
@@ -15,8 +15,5 @@ export class FilterButtonComponent implements OnInit {
   count: number;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

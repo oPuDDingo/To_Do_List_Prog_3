@@ -5,13 +5,11 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent implements OnInit {
+export class CounterComponent {
 
   @Input()
   count: number;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 }

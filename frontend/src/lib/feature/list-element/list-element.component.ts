@@ -6,7 +6,7 @@ import {List} from "../../data-access/models/list";
   templateUrl: './list-element.component.html',
   styleUrls: ['./list-element.component.scss']
 })
-export class ListElementComponent implements OnInit {
+export class ListElementComponent {
 
   @Input()
   list : List;
@@ -25,9 +25,6 @@ export class ListElementComponent implements OnInit {
 
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   editTitle(e: Event) {
     this.focusIn();
