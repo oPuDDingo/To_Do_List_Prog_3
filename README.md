@@ -12,7 +12,7 @@ Have FUN with our Project.
 
 You need a delightful IDE like CLion (or what do u think is a attractive IDE?) and a enjoyable browser like `Brave`,`Vivaldi` or `Firefox`.
 In Firefox, unfortunately, the calendar is not displayed perfectly with the icon.
-![Firefox calendar](![image](https://user-images.githubusercontent.com/92167892/154850376-a0bfaa41-b992-4dea-8dac-8562b6c45298.png))
+![Firefox calendar](/BIN 3/Prog3Project_X_Portfolio)
 ![Brave calendar](![image](https://user-images.githubusercontent.com/92167892/154850428-1ac10cd1-8cb2-42fd-8a85-cb5222d954cf.png))
 
 ***
